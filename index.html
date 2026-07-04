@@ -10,15 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F2F5F1;
-    --ink: #17231E;
-    --ink-soft: #3E4E47;
-    --evergreen: #1D5C49;
-    --evergreen-deep: #123C30;
-    --marigold: #B45309;
-    --line: #C9D3CC;
-    --card: #FBFCFA;
-    --focus: #B45309;
+    --paper: #F7F5F0;
+    --ink: #1A2426;
+    --ink-soft: #3F4E4F;
+    --evergreen: #0E5A5E;
+    --evergreen-deep: #083E42;
+    --marigold: #C0392B;
+    --line: #D5D0C5;
+    --card: #FCFBF7;
+    --focus: #C0392B;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
     background: var(--paper);
     color: var(--ink);
     line-height: 1.65;
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
   }
 
   /* Visible skip link — accessibility as aesthetic, not afterthought */
@@ -93,10 +93,10 @@
   nav a:hover { color: var(--evergreen); text-decoration: underline; text-underline-offset: 4px; }
 
   /* ---------- Hero ---------- */
-  .hero { padding: 5rem 0 4.5rem; }
+  .hero { padding: 4.5rem 0; }
   .eyebrow {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--evergreen);
@@ -109,7 +109,7 @@
     font-size: clamp(2.2rem, 5.5vw, 3.8rem);
     line-height: 1.12;
     letter-spacing: -0.02em;
-    max-width: 20ch;
+    max-width: 28ch;
   }
   /* Signature: the focus-ring highlight — accessibility rendered visible */
   .focus-word {
@@ -128,7 +128,7 @@
   }
   .hero p {
     margin-top: 1.6rem;
-    max-width: 56ch;
+    max-width: 62ch;
     font-size: 1.15rem;
     color: var(--ink-soft);
   }
@@ -144,13 +144,13 @@
   .btn-primary { background: var(--evergreen-deep); color: #fff; }
   .btn-primary:hover { background: var(--evergreen); }
   .btn-ghost { color: var(--evergreen-deep); border: 1.5px solid var(--evergreen); }
-  .btn-ghost:hover { background: rgba(29, 92, 73, 0.08); }
+  .btn-ghost:hover { background: rgba(14, 90, 94, 0.08); }
 
   /* ---------- Module sections ---------- */
   section { padding: 4rem 0; border-top: 1px solid var(--line); }
   .module-label {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--evergreen);
@@ -186,10 +186,10 @@
   .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.6rem; }
   .tag {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     padding: 0.22rem 0.6rem;
     border-radius: 999px;
-    background: rgba(29, 92, 73, 0.1);
+    background: rgba(14, 90, 94, 0.12);
     color: var(--evergreen-deep);
   }
 
@@ -204,7 +204,7 @@
   .rubric-row dt {
     padding: 1.1rem 1.3rem;
     font-weight: 600;
-    background: rgba(29, 92, 73, 0.05);
+    background: rgba(14, 90, 94, 0.07);
     font-family: "Bricolage Grotesque", sans-serif;
   }
   .rubric-row dd { padding: 1.1rem 1.3rem; color: var(--ink-soft); font-size: 0.98rem; }
@@ -230,19 +230,19 @@
   .about-grid p + p { margin-top: 1rem; }
   .aside-box {
     background: var(--evergreen-deep);
-    color: #E8F0EC;
+    color: #E6F0EE;
     border-radius: 12px;
     padding: 1.8rem;
   }
   .aside-box h3 { font-family: "Bricolage Grotesque", sans-serif; color: #fff; margin-bottom: 0.8rem; font-size: 1.15rem; }
-  .aside-box a { color: #FCD9A8; font-weight: 600; }
-  .aside-box a:focus-visible { outline-color: #FCD9A8; }
+  .aside-box a { color: #F5B7A6; font-weight: 600; }
+  .aside-box a:focus-visible { outline-color: #F5B7A6; }
 
   footer {
     border-top: 1px solid var(--line);
     padding: 2.2rem 0 3rem;
     color: var(--ink-soft);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
   footer a { color: var(--evergreen-deep); font-weight: 500; }
 </style>
