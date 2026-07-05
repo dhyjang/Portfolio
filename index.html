@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dan Jang — Instructional Designer</title>
-<meta name="description" content="Dan Jang is an instructional designer specializing in accessible, evidence-based course design, Canvas LMS administration, and educational technology automation.">
+<meta name="description" content="Daniel Jang is an instructional designer specializing in accessible, evidence-based course design, Canvas LMS administration, and educational technology automation.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link rel="canonical" href="https://jangdaniel.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jangdaniel.com/">
+<meta property="og:title" content="Daniel Jang — Instructional Designer">
+<meta property="og:description" content="Accessible, evidence-based learning design. CPACC-certified, Canvas Certified Admin, QM Peer Reviewer.">
+<meta property="og:image" content="https://jangdaniel.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Daniel Jang, Instructional Designer — learning experiences designed to be accessible from the first draft">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daniel Jang — Instructional Designer">
+<meta name="twitter:description" content="Accessible, evidence-based learning design. CPACC-certified, Canvas Certified Admin, QM Peer Reviewer.">
+<meta name="twitter:image" content="https://jangdaniel.com/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -176,6 +191,133 @@
     flex-direction: column;
     gap: 0.7rem;
   }
+  .card-thumb {
+    margin: -1.6rem -1.6rem 0.4rem;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 1px solid var(--line);
+    background: rgba(14, 90, 94, 0.07);
+  }
+  .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .verify-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-left: 0.75rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 6px;
+    border: 1.5px solid var(--evergreen);
+    color: var(--evergreen-deep);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .verify-btn:hover { background: rgba(14, 90, 94, 0.08); }
+  .creds li { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+
+  .demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: flex-start;
+    margin-top: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: 7px;
+    background: var(--evergreen-deep);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .demo-link:hover { background: var(--evergreen); }
+
+  /* ---------- Timeline ---------- */
+  .timeline { list-style: none; position: relative; max-width: 46rem; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--line);
+  }
+  .timeline li { position: relative; padding: 0 0 2.2rem 2.2rem; }
+  .timeline li.tl-phase { padding-bottom: 1.1rem; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li:not(.tl-phase)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 3px solid var(--evergreen);
+  }
+  .timeline li.current::before { background: var(--marigold); border-color: var(--marigold); }
+  .tl-date {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--evergreen);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+  .timeline h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .tl-org { color: var(--ink-soft); font-weight: 500; margin-bottom: 0.5rem; }
+  .tl-date .dur { color: var(--ink-soft); letter-spacing: 0; opacity: 1; }
+  .tl-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tl-chips span {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    padding: 0.22rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(14, 90, 94, 0.12);
+    color: var(--evergreen-deep);
+  }
+  .timeline li.current .tl-chips span { background: rgba(192, 57, 43, 0.1); color: #8E2A20; }
+  .tl-phase {
+    list-style: none;
+    position: relative;
+    padding: 0 0 1.1rem 2.2rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--marigold);
+    font-weight: 500;
+  }
+  .tl-phase::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    background: var(--marigold);
+    transform: rotate(45deg);
+  }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
   .card h3 {
     font-family: "Bricolage Grotesque", sans-serif;
     font-size: 1.2rem;
@@ -227,6 +369,33 @@
   /* ---------- About + contact ---------- */
   .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
   @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Mobile optimization ---------- */
+  .btn, .verify-btn, .demo-link, nav a { min-height: 44px; display: inline-flex; align-items: center; }
+  nav a { padding: 0.35rem 0.2rem; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 2.75rem 0; }
+    section { padding: 2.75rem 0; }
+    .wrap { padding: 0 1.1rem; }
+    .nav { padding: 0.8rem 0; gap: 0.5rem; }
+    nav ul { gap: 0.35rem 1.1rem; }
+    .hero p { font-size: 1.05rem; }
+    .hero-actions { margin-top: 1.6rem; }
+    .btn { padding: 0.7rem 1.3rem; width: 100%; justify-content: center; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .cards { grid-template-columns: 1fr; }
+    .creds li { flex-wrap: wrap; }
+    .verify-btn { margin-left: 0; }
+    .timeline li { padding-left: 1.8rem; }
+    .aside-box { padding: 1.4rem; }
+    h2 { margin-bottom: 1.3rem; }
+    .lede { margin-bottom: 1.6rem; }
+  }
+
+  @media (min-width: 1440px) {
+    .wrap { max-width: 72rem; }
+  }
   .about-grid p + p { margin-top: 1rem; }
   .aside-box {
     background: var(--evergreen-deep);
@@ -258,6 +427,7 @@
         <li><a href="#work">Work</a></li>
         <li><a href="#expertise">Expertise</a></li>
         <li><a href="#credentials">Credentials</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -283,34 +453,43 @@
       <p class="lede">A sample of recent initiatives spanning course quality, faculty development, accessibility, and automation.</p>
       <div class="cards">
         <article class="card">
+          <div class="card-thumb"><img src="assets/qa-plus.png" alt="Screenshot of the QA+ course quality certification program materials" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
           <h3>QA+ Course Quality Certification Program</h3>
           <p>Helped design and operate a three-tier internal course quality framework grounded in Quality Matters principles — managing reviews, faculty communications, and certification for online courses across disciplines.</p>
           <div class="tags"><span class="tag">Quality Matters</span><span class="tag">Course Review</span><span class="tag">Program Design</span></div>
         </article>
         <article class="card">
+          <div class="card-thumb"><img src="assets/certificate-workflow.png" alt="Diagram of the automated certificate workflow connecting Canvas, Forms, and Power Automate" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
           <h3>Automated Certificate Workflow</h3>
           <p>Built an end-to-end certificate-of-completion pipeline for faculty professional development courses, connecting Canvas, Microsoft Forms, Power Automate, SharePoint, and Excel — eliminating hours of manual processing.</p>
           <div class="tags"><span class="tag">Power Automate</span><span class="tag">Canvas LMS</span><span class="tag">Microsoft 365</span></div>
+          <a class="demo-link" href="demos/certificate.html">View live demo<span class="visually-hidden"> of the automated certificate</span></a>
         </article>
         <article class="card">
+          <div class="card-thumb"><img src="assets/captioning-training.png" alt="Slide from the video accessibility and captioning training for faculty" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
           <h3>Video Accessibility &amp; Captioning Training</h3>
           <p>Designed faculty training on accessible video workflows — YouTube, Zoom, and Canvas Studio captioning plus WCAG-aligned transcript cleanup — delivered with zero accessibility flags in the materials themselves.</p>
           <div class="tags"><span class="tag">WCAG</span><span class="tag">Faculty Development</span><span class="tag">Multimedia</span></div>
         </article>
         <article class="card">
+          <div class="card-thumb"><img src="assets/course-redesign.png" alt="Preview of the redesigned College Success course in Canvas" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
           <h3>Course Redesign for the AI Era</h3>
           <p>Led a redesign proposal for a first-year College Success course, refreshing it for AI-era relevance with hands-on activities that build students' critical AI literacy alongside study skills.</p>
           <div class="tags"><span class="tag">Course Design</span><span class="tag">AI Literacy</span><span class="tag">Student Success</span></div>
         </article>
         <article class="card">
+          <div class="card-thumb"><img src="assets/feedback-system.png" alt="Screenshot of the faculty consultation feedback survey" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
           <h3>Faculty Consultation Feedback System</h3>
           <p>Designed a consultation feedback survey pipeline tied to institutional accreditation goals, using Microsoft Forms and Bookings to capture actionable data on instructional support services.</p>
           <div class="tags"><span class="tag">Assessment</span><span class="tag">Accreditation</span><span class="tag">Data-Informed</span></div>
+          <a class="demo-link" href="demos/feedback-form.html">Try the survey demo<span class="visually-hidden"> of the consultation feedback form</span></a>
         </article>
         <article class="card">
+          <div class="card-thumb"><img src="assets/kudos-cards.png" alt="Preview of the digital kudos card tool" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
           <h3>Employee Recognition Initiative</h3>
           <p>Created a digital kudos card program with automated delivery — an interactive, brand-themed tool built to full WCAG AA compliance, proving accessible design and delight aren't at odds.</p>
           <div class="tags"><span class="tag">WCAG AA</span><span class="tag">UX</span><span class="tag">Automation</span></div>
+          <a class="demo-link" href="demos/kudos-card.html">Try the interactive demo<span class="visually-hidden"> of the kudos card tool</span></a>
         </article>
       </div>
     </div>
@@ -351,18 +530,66 @@
       <h2>Certifications &amp; education</h2>
       <ul class="creds">
         <li>MSEd, Digital Age Learning &amp; Educational Technology — Johns Hopkins University</li>
-        <li>CPACC — Certified Professional in Accessibility Core Competencies (IAAP)</li>
-        <li>Quality Matters Certified Peer Reviewer</li>
-        <li>Canvas Certified Technical Admin</li>
-        <li>ATD Instructional Design Certificate</li>
+        <li><span>CPACC — Certified Professional in Accessibility Core Competencies (IAAP)</span><a class="verify-btn" href="https://www.credly.com/badges/e2ce7a39-3601-4ff3-9c47-26e3b73a021c/public_url" target="_blank" rel="noopener">Verify<span class="visually-hidden"> CPACC credential (opens in new tab)</span></a></li>
+        <li><span>Quality Matters Certified Peer Reviewer</span><a class="verify-btn" href="https://www.credly.com/badges/1bb943fe-6fe0-4333-a2d6-f156ea27f5e1/public_url" target="_blank" rel="noopener">Verify<span class="visually-hidden"> Quality Matters Certified Peer Reviewer credential (opens in new tab)</span></a></li>
+        <li><span>Canvas Certified Technical Admin</span><a class="verify-btn" href="https://badges.parchment.com/public/assertions/KApCSftAQj6ykWiLuXG9hw" target="_blank" rel="noopener">Verify<span class="visually-hidden"> Canvas Certified Technical Admin credential (opens in new tab)</span></a></li>
+        <li><span>ATD Instructional Design Certificate</span><a class="verify-btn" href="https://www.credly.com/badges/57b349fb-5eb6-46c7-83c9-7c7f5fdf115e/public_url" target="_blank" rel="noopener">Verify<span class="visually-hidden"> ATD Instructional Design Certificate credential (opens in new tab)</span></a></li>
       </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <p class="module-label">Module 04 — Experience</p>
+      <h2>The path so far</h2>
+      <ol class="timeline">
+        <li class="tl-phase">Chapter 3 — Designing at scale</li>
+        <li class="current">
+          <span class="tl-date">Feb 2026 — Present</span>
+          <h3>Instructional Designer</h3>
+          <p class="tl-org">Germanna Community College</p>
+          <div class="tl-chips"><span>Quality Matters</span><span>Canvas admin</span><span>WCAG audits</span><span>AI in teaching</span></div>
+        </li>
+        <li>
+          <span class="tl-date">2024 — 2026 <span class="dur">· 1.5 yrs</span></span>
+          <h3>Senior Instructional Technology Specialist</h3>
+          <p class="tl-org">University of Maryland School of Dentistry</p>
+          <div class="tl-chips"><span>Campus-wide a11y initiative</span><span>Blackboard lead</span><span>Faculty training</span></div>
+        </li>
+        <li>
+          <span class="tl-date">2022 — 2024 <span class="dur">· 2 yrs</span></span>
+          <h3>Instructional Technologist</h3>
+          <p class="tl-org">Johns Hopkins — Carey Business School</p>
+          <div class="tl-chips"><span>500+ files/semester to WCAG 2.1</span><span>Canvas builds</span><span>Support chatbot</span></div>
+        </li>
+        <li class="tl-phase">Chapter 2 — The bridge</li>
+        <li>
+          <span class="tl-date">2020 — 2022 <span class="dur">· 2 yrs</span></span>
+          <h3>Site Director</h3>
+          <p class="tl-org">Saga Education</p>
+          <div class="tl-chips"><span>Team leadership</span><span>Data-driven programs</span><span>PD curriculum</span></div>
+        </li>
+        <li class="tl-phase">Chapter 1 — The classroom</li>
+        <li>
+          <span class="tl-date">2014 — 2020 <span class="dur">· 6 yrs</span></span>
+          <h3>Mathematics Educator</h3>
+          <p class="tl-org">DC Public &amp; Public Charter Schools</p>
+          <div class="tl-chips"><span>Tech integration</span><span>Differentiation</span><span>Assessment design</span></div>
+        </li>
+        <li>
+          <span class="tl-date">2018</span>
+          <h3>MSEd, Digital Age Learning &amp; Ed Tech</h3>
+          <p class="tl-org">Johns Hopkins University — while teaching full-time</p>
+          <div class="tl-chips"><span>Learning science</span><span>Educational technology</span></div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <section id="about">
     <div class="wrap about-grid">
       <div>
-        <p class="module-label">Module 04 — About</p>
+        <p class="module-label">Module 05 — About</p>
         <h2>From the classroom to the design studio</h2>
         <p>I spent six years teaching math in DC Public Schools before moving into instructional design — first at Johns Hopkins Carey Business School and the University of Maryland School of Dentistry, and now in community college online learning. That classroom experience is the foundation of everything I design: I've been on the other side of the materials, and I know what clarity, structure, and access mean to a learner.</p>
         <p>Today my work sits at the intersection of learning science, accessibility, and technology. Whether I'm reviewing a course against quality standards, building an automation that gives faculty their time back, or helping an institution think through responsible AI adoption, my goal is the same: learning experiences that work for everyone.</p>
@@ -371,7 +598,8 @@
         <h3>Let's connect</h3>
         <p>I'm always glad to talk instructional design, accessibility, or ed-tech — whether you're a fellow designer, faculty member, or just curious.</p>
         <p style="margin-top: 1rem;"><a href="https://www.linkedin.com/in/jangdaniel/">Connect on LinkedIn</a><br>
-        <a href="mailto:hello@jangdaniel.com">hello@jangdaniel.com</a></p>
+        <a href="mailto:hello@jangdaniel.com">hello@jangdaniel.com</a><br>
+        <a href="assets/daniel-jang-resume.pdf">Download my resume (PDF)</a></p>
       </div>
     </div>
   </section>
@@ -379,7 +607,7 @@
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Dan Jang. Built by hand with accessibility in mind — <a href="#top">back to top</a>.</p>
+    <p>© 2026 Daniel Jang. Built by hand with accessibility in mind — <a href="accessibility.html">accessibility statement</a> · <a href="#top">back to top</a>.</p>
   </div>
 </footer>
 </body>
