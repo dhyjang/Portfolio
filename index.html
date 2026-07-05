@@ -224,25 +224,46 @@
   }
   .demo-link:hover { background: var(--evergreen); }
 
-  /* ---------- Timeline ---------- */
-  .timeline { list-style: none; position: relative; max-width: 46rem; }
+  /* ---------- Timeline (horizontal) ---------- */
+  .timeline-scroller {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+  .timeline-scroller:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .timeline {
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 270px;
+    gap: 1.1rem;
+    position: relative;
+    padding-top: 2rem;
+    min-width: min-content;
+  }
   .timeline::before {
     content: "";
     position: absolute;
-    left: 7px;
-    top: 6px;
-    bottom: 6px;
-    width: 2px;
+    top: 7px;
+    left: 8px;
+    right: 8px;
+    height: 2px;
     background: var(--line);
   }
-  .timeline li { position: relative; padding: 0 0 2.2rem 2.2rem; }
-  .timeline li.tl-phase { padding-bottom: 1.1rem; }
-  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li {
+    position: relative;
+    scroll-snap-align: start;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+  }
   .timeline li:not(.tl-phase)::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 6px;
+    top: -2rem;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -256,102 +277,59 @@
     letter-spacing: 0.08em;
     color: var(--evergreen);
     display: block;
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.3rem;
   }
+  .tl-date .dur { color: var(--ink-soft); letter-spacing: 0; }
   .timeline h3 {
     font-family: "Bricolage Grotesque", sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     line-height: 1.3;
+    margin-bottom: 0.15rem;
   }
-  .tl-org { color: var(--ink-soft); font-weight: 500; margin-bottom: 0.5rem; }
-  .tl-date .dur { color: var(--ink-soft); letter-spacing: 0; opacity: 1; }
+  .tl-org { color: var(--ink-soft); font-weight: 500; font-size: 0.92rem; margin-bottom: 0.7rem; }
   .tl-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .tl-chips span {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.78rem;
-    padding: 0.22rem 0.65rem;
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
     border-radius: 999px;
     background: rgba(14, 90, 94, 0.12);
     color: var(--evergreen-deep);
   }
   .timeline li.current .tl-chips span { background: rgba(192, 57, 43, 0.1); color: #8E2A20; }
   .tl-phase {
-    list-style: none;
-    position: relative;
-    padding: 0 0 1.1rem 2.2rem;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    writing-mode: vertical-rl;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--marigold);
     font-weight: 500;
   }
+  .timeline li.tl-phase { grid-auto-columns: auto; width: 2rem; }
   .tl-phase::before {
     content: "";
     position: absolute;
     left: 4px;
-    top: 4px;
+    top: -1.75rem;
     width: 8px;
     height: 8px;
     background: var(--marigold);
     transform: rotate(45deg);
   }
-  .visually-hidden {
-    position: absolute;
-    width: 1px; height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-  .card h3 {
-    font-family: "Bricolage Grotesque", sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1.3;
-  }
-  .card p { color: var(--ink-soft); font-size: 0.98rem; }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.6rem; }
-  .tag {
+  .scroll-hint {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.78rem;
-    padding: 0.22rem 0.6rem;
-    border-radius: 999px;
-    background: rgba(14, 90, 94, 0.12);
-    color: var(--evergreen-deep);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
   }
-
-  /* ---------- Expertise table (rubric-style) ---------- */
-  .rubric { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); }
-  .rubric-row {
-    display: grid;
-    grid-template-columns: minmax(150px, 1fr) 2.2fr;
-    border-top: 1px solid var(--line);
-  }
-  .rubric-row:first-child { border-top: none; }
-  .rubric-row dt {
-    padding: 1.1rem 1.3rem;
-    font-weight: 600;
-    background: rgba(14, 90, 94, 0.07);
-    font-family: "Bricolage Grotesque", sans-serif;
-  }
-  .rubric-row dd { padding: 1.1rem 1.3rem; color: var(--ink-soft); font-size: 0.98rem; }
-  @media (max-width: 560px) {
-    .rubric-row { grid-template-columns: 1fr; }
-    .rubric-row dd { padding-top: 0; }
-  }
-
-  /* ---------- Credentials ---------- */
-  .creds { display: flex; flex-wrap: wrap; gap: 0.7rem; list-style: none; }
-  .creds li {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 0.6rem 1rem;
-    font-size: 0.92rem;
-    font-weight: 500;
-  }
-
   /* ---------- About + contact ---------- */
   .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
   @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
@@ -373,7 +351,6 @@
     .cards { grid-template-columns: 1fr; }
     .creds li { flex-wrap: wrap; }
     .verify-btn { margin-left: 0; }
-    .timeline li { padding-left: 1.8rem; }
     .aside-box { padding: 1.4rem; }
     h2 { margin-bottom: 1.3rem; }
     .lede { margin-bottom: 1.6rem; }
@@ -439,8 +416,8 @@
       <p class="lede">A sample of recent initiatives spanning course quality, faculty development, accessibility, and automation.</p>
       <div class="cards">
         <article class="card">
-          <h3>QA+ Course Quality Certification Program</h3>
-          <p>Helped design and operate a three-tier internal course quality framework grounded in Quality Matters principles — managing reviews, faculty communications, and certification for online courses across disciplines.</p>
+          <h3>Course Quality Certification Program</h3>
+          <p>Helped design and operate a tiered internal course quality framework grounded in Quality Matters principles — managing reviews, faculty communications, and certification for online courses across disciplines.</p>
           <div class="tags"><span class="tag">Quality Matters</span><span class="tag">Course Review</span><span class="tag">Program Design</span></div>
         </article>
         <article class="card">
@@ -453,6 +430,7 @@
           <h3>Video Accessibility &amp; Captioning Training</h3>
           <p>Designed faculty training on accessible video workflows — YouTube, Zoom, and Canvas Studio captioning plus WCAG-aligned transcript cleanup — delivered with zero accessibility flags in the materials themselves.</p>
           <div class="tags"><span class="tag">WCAG</span><span class="tag">Faculty Development</span><span class="tag">Multimedia</span></div>
+          <a class="demo-link" href="demos/caption-cleanup.html">Try the caption cleanup demo<span class="visually-hidden"> from the video accessibility training</span></a>
         </article>
         <article class="card">
           <h3>Course Redesign for the AI Era</h3>
@@ -522,6 +500,7 @@
     <div class="wrap">
       <p class="module-label">Module 04 — Experience</p>
       <h2>The path so far</h2>
+      <div class="timeline-scroller" tabindex="0" role="region" aria-label="Career timeline, scrolls horizontally">
       <ol class="timeline">
         <li class="tl-phase">Chapter 3 — Designing at scale</li>
         <li class="current">
@@ -563,6 +542,8 @@
           <div class="tl-chips"><span>Learning science</span><span>Educational technology</span></div>
         </li>
       </ol>
+      </div>
+      <p class="scroll-hint" aria-hidden="true">← scroll for the full journey →</p>
     </div>
   </section>
 
