@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Accessible Certificate Automation — Daniel Jang</title>
+<meta name="description" content="How an inaccessible, manual certificate process for 300+ participants became an automated, accessibility-first workflow.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F5F0; --ink: #1A2426; --ink-soft: #3F4E4F;
+    --evergreen: #0E5A5E; --evergreen-deep: #083E42; --marigold: #C0392B;
+    --line: #D5D0C5; --card: #FCFBF7; --focus: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Public Sans", -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 1.125rem; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--evergreen-deep); color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+  .wrap { max-width: 48rem; margin: 0 auto; padding: 0 1.5rem; }
+  header { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+  .wordmark { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .wordmark span { color: var(--evergreen); }
+  main { padding: 3.5rem 0 4rem; }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--evergreen); display: block; margin-bottom: 0.8rem; }
+  h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(1.9rem, 4.5vw, 2.7rem); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.2rem; max-width: 24ch; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2.5rem; }
+  .meta span { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; padding: 0.25rem 0.7rem; border-radius: 999px; background: rgba(14, 90, 94, 0.12); color: var(--evergreen-deep); }
+  h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 1.45rem; margin: 2.6rem 0 0.8rem; }
+  p + p { margin-top: 0.9rem; }
+  a { color: var(--evergreen-deep); font-weight: 500; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin: 1.4rem 0; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem; }
+  .stat .num { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--evergreen-deep); line-height: 1.1; }
+  .stat .label { font-size: 0.9rem; color: var(--ink-soft); margin-top: 0.3rem; }
+  .pull { border-left: 4px solid var(--marigold); padding: 0.3rem 0 0.3rem 1.2rem; margin: 1.6rem 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--evergreen-deep); max-width: 32ch; }
+  .demo-embed { margin: 1.6rem 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #ECEAE4; }
+  .demo-embed iframe { display: block; width: 100%; height: 620px; border: none; }
+  .demo-embed-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 1.1rem; background: var(--evergreen-deep); color: #E6F0EE; font-size: 0.9rem; flex-wrap: wrap; }
+  .demo-embed-bar a { color: #F5B7A6; }
+  ol.flow { padding-left: 1.3rem; margin: 0.8rem 0; }
+  ol.flow li { margin: 0.5rem 0; }
+  .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 2.5rem; background: var(--evergreen-deep); color: #fff; text-decoration: none; font-weight: 600; padding: 0.7rem 1.5rem; border-radius: 8px; }
+  .back:hover { background: var(--evergreen); }
+  footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+  <div class="wrap"><a class="wordmark" href="../index.html">Daniel Jang<span>.</span></a></div>
+</header>
+<main id="main">
+  <article class="wrap">
+    <span class="eyebrow">Case Study</span>
+    <h1>Making 300+ certificates accessible — then making them automatic.</h1>
+    <div class="meta">
+      <span>Power Automate</span><span>Canvas</span><span>Microsoft Forms</span><span>SharePoint</span><span>WCAG</span><span>HTML email</span>
+    </div>
+
+    <h2>The problem wasn't speed. It was access.</h2>
+    <p>Faculty professional development courses at my institution issue certificates of completion — documentation that matters for records, review cycles, and professional growth. But the certificates being sent weren't accessible. A certificate delivered as a flat image or an untagged PDF is invisible to a screen reader: for some of the very faculty completing accessibility training, their own certificate was a document they couldn't read.</p>
+    <p>There was a second problem stacked on top: every certificate was created and sent manually. With more than 300 participants across two professional development courses, manual processing meant delays between someone finishing a course and holding proof that they had — sometimes long ones.</p>
+
+    <div class="stat-row">
+      <div class="stat"><p class="num">300+</p><p class="label">participants previously handled one certificate at a time</p></div>
+      <div class="stat"><p class="num">2</p><p class="label">formats delivered per participant — accessible HTML and archival PDF</p></div>
+      <div class="stat"><p class="num">0</p><p class="label">manual steps between course completion and certificate delivery</p></div>
+    </div>
+
+    <h2>Design requirements I set</h2>
+    <p>Fixing the delay alone would have been easy — and would have automated an inaccessible document. I set three requirements that shaped everything downstream:</p>
+    <ol class="flow">
+      <li><strong>Dual format, by design.</strong> Every participant receives a fully accessible HTML certificate — real text, semantic structure, screen-reader friendly — <em>and</em> a PDF copy for records. Neither format is an afterthought; the workflow produces both from the same source.</li>
+      <li><strong>Preferred names, not system names.</strong> A certificate is personal. The workflow honors the name a participant actually goes by, rather than whatever a directory field says — a small data-handling decision that requires deliberate design, and one that participants notice.</li>
+      <li><strong>Institutional identity, accessibly rendered.</strong> The certificate carries official school branding colors — but implemented in HTML and verified for contrast, so brand identity and accessibility reinforce each other instead of trading off.</li>
+    </ol>
+
+    <p class="pull">Automating an inaccessible process just delivers inaccessibility faster. The document had to be fixed first.</p>
+
+    <h2>How the workflow runs</h2>
+    <p>The pipeline connects the tools faculty already use, so nothing new had to be adopted:</p>
+    <ol class="flow">
+      <li>A participant completes the course requirements and submits a Microsoft Form.</li>
+      <li>The submission triggers a Power Automate flow — no human in the loop.</li>
+      <li>The flow generates the certificate, populating the participant's preferred name and completion details into the accessible HTML template.</li>
+      <li>A PDF copy is produced for institutional records and archived to SharePoint automatically.</li>
+      <li>The participant receives their certificate by email within moments of finishing — in both formats.</li>
+    </ol>
+    <p>Building HTML that renders reliably in email clients — while staying semantically accessible — was one of the quieter technical fights of the project. Email rendering engines are far less forgiving than browsers, so the template had to be engineered for both audiences at once: assistive technology and Outlook.</p>
+
+    <h2>The certificate</h2>
+    <p>Below is an interactive sample with placeholder data — the design, structure, and branding approach of the real deliverable:</p>
+    <div class="demo-embed">
+      <div class="demo-embed-bar"><span>Live sample — placeholder data</span><a href="certificate.html">Open full page ↗</a></div>
+      <iframe src="certificate.html" title="Sample of the automated accessible certificate of completion" loading="lazy"></iframe>
+    </div>
+
+    <h2>Results</h2>
+    <p>Certificate delivery went from a manual, delayed process to an immediate, automatic one — for every participant, in a format every participant can read. The archive builds itself: each certificate is logged to SharePoint the moment it's issued, which turned record-keeping from a task into a byproduct.</p>
+
+    <h2>What's next</h2>
+    <p>The current workflow serves two professional development courses. The next step is templatizing it — abstracting the course-specific pieces so the same pipeline can be replicated for any course that requires certification, making accessible automated credentialing the institution's permanent default rather than a per-course project. That's the real goal of automation work in an educational setting: not saving one person time, but changing what the standard operating procedure is.</p>
+
+    <a class="back" href="../index.html#work">← Back to all work</a>
+  </article>
+</main>
+<footer>
+  <div class="wrap"><p>© 2026 Daniel Jang — <a href="../accessibility.html">accessibility statement</a></p></div>
+</footer>
+</body>
+</html>
