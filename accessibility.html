@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessibility Statement — Daniel Jang</title>
+<meta name="description" content="Accessibility statement for jangdaniel.com: conformance target, testing approach, and how to report issues.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F5F0; --ink: #1A2426; --ink-soft: #3F4E4F;
+    --evergreen: #0E5A5E; --evergreen-deep: #083E42; --marigold: #C0392B;
+    --line: #D5D0C5; --focus: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Public Sans", -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 1.125rem; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--evergreen-deep); color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
+  header { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+  .wordmark { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .wordmark span { color: var(--evergreen); }
+  main { padding: 3.5rem 0 4rem; }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--evergreen); display: block; margin-bottom: 0.8rem; }
+  h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(1.9rem, 4.5vw, 2.6rem); letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 1.35rem; margin: 2.2rem 0 0.7rem; }
+  p + p { margin-top: 0.9rem; }
+  a { color: var(--evergreen-deep); font-weight: 500; }
+  ul { padding-left: 1.3rem; margin: 0.7rem 0; }
+  li { margin: 0.35rem 0; }
+  .updated { color: var(--ink-soft); font-size: 0.95rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+  footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+  <div class="wrap"><a class="wordmark" href="index.html">Daniel Jang<span>.</span></a></div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <span class="eyebrow">Accessibility Statement</span>
+    <h1>This site is designed to be usable by everyone.</h1>
+    <p>Accessibility is the core of my professional practice, so it's also the standard I hold my own site to. I want every visitor — regardless of ability, device, or assistive technology — to be able to read, navigate, and interact with everything here.</p>
+
+    <h2>Conformance target</h2>
+    <p>This website aims to conform to the <a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines (WCAG) 2.1</a> Level AA, and exceeds it where practical — most text on the site meets the stricter Level AAA contrast ratio of 7:1.</p>
+
+    <h2>What that looks like in practice</h2>
+    <ul>
+      <li>Semantic HTML structure with proper landmarks, heading hierarchy, and list markup</li>
+      <li>A visible skip-to-content link and clearly visible keyboard focus indicators on every interactive element</li>
+      <li>Color contrast verified programmatically for every text and background combination, including transparent overlays</li>
+      <li>Touch targets of at least 44 pixels for all links and buttons</li>
+      <li>Respect for reduced-motion preferences — animations are disabled when your system requests it</li>
+      <li>Descriptive alt text on informative images and accessible names on all controls, including screen-reader context for links that open new tabs</li>
+      <li>Fluid, responsive layout that reflows without horizontal scrolling on small screens, with text kept to a comfortable reading measure</li>
+      <li>Interactive demos built with fieldset/legend grouping, live status announcements, and full keyboard operability</li>
+    </ul>
+
+    <h2>Known limitations</h2>
+    <p>Web fonts are loaded from Google Fonts; if they fail to load, the site falls back to system fonts and remains fully readable. Third-party pages linked from this site (credential verification services, LinkedIn) are outside my control and may not meet the same standards.</p>
+
+    <h2>Feedback</h2>
+    <p>If you encounter any barrier on this site — anything at all — I genuinely want to know. Email me at <a href="mailto:hello@jangdaniel.com">hello@jangdaniel.com</a> and I'll fix it promptly. Accessibility bug reports are a gift.</p>
+
+    <p class="updated">This statement was last reviewed in July 2026.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap"><p>© 2026 Daniel Jang — <a href="index.html">back to the portfolio</a>.</p></div>
+</footer>
+</body>
+</html>
