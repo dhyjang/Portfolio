@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — Inside a Course Quality Review | Daniel Jang</title>
+<meta name="description" content="Portfolio demo showing how a course quality reviewer reads a module page — click the markers to see evidence-based, collegial feedback.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.65; }
+  .demo-bar {
+    max-width: 780px; margin: 0 auto 24px;
+    background: #17231E; color: #F5F3ED;
+    border-radius: 10px; padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .demo-bar a { color: #F5B7A6; font-weight: 600; }
+  .demo-bar a:focus-visible { outline: 3px solid #F5B7A6; outline-offset: 2px; }
+  .stage { max-width: 780px; margin: 0 auto; }
+  .intro { margin-bottom: 18px; }
+  .intro h1 { font-size: 1.3rem; font-weight: 600; color: #083E42; margin-bottom: 4px; }
+  .intro p { color: #555; font-size: 0.95rem; max-width: 64ch; }
+  .course-page { background: #fff; border: 1px solid #d8d5cc; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .course-head { background: #4a5568; padding: 18px 30px; color: #fff; }
+  .course-head .crumb { font-size: 0.75rem; opacity: 0.75; }
+  .course-head h2 { font-weight: 500; font-size: 1.2rem; }
+  .course-body { padding: 26px 30px 30px; }
+  .course-body h3 { font-size: 1rem; font-weight: 600; margin: 1.2rem 0 0.4rem; }
+  .course-body h3:first-child { margin-top: 0; }
+  .course-body ul { padding-left: 1.4rem; margin: 0.4rem 0; }
+  .course-body li { margin: 0.25rem 0; }
+  .flag {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 30px; height: 30px; margin-left: 8px; padding: 0 8px;
+    border-radius: 99px; border: none; cursor: pointer;
+    background: #A20B35; color: #fff; font-family: inherit; font-weight: 600; font-size: 0.85rem;
+    vertical-align: middle;
+  }
+  .flag[aria-expanded="true"] { background: #083E42; }
+  .flag:hover { transform: scale(1.08); }
+  .flag:focus-visible { outline: 3px solid #C0392B; outline-offset: 2px; }
+  .note {
+    display: none; margin: 10px 0 14px; border-radius: 10px; overflow: hidden;
+    border: 1px solid #d8d5cc; font-size: 0.93rem;
+  }
+  .note.open { display: block; }
+  .note .n-head { background: #083E42; color: #fff; padding: 8px 16px; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+  .note .n-body { background: #f7f6f2; padding: 14px 16px; }
+  .note p + p { margin-top: 0.6rem; }
+  .note strong { color: #083E42; }
+  .process { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin: 4px 0 6px; }
+  .process span { background: #fff; border: 1px solid #c9c5ba; border-radius: 99px; padding: 5px 14px; font-size: 0.8rem; font-weight: 500; color: #083E42; }
+  .process span.here { background: #083E42; color: #fff; border-color: #083E42; }
+  .process .arrow { border: none; background: none; padding: 0; color: #8a867a; font-size: 0.85rem; }
+  .legend { display: flex; gap: 14px; align-items: center; margin: 14px 0 18px; font-size: 0.88rem; color: #555; flex-wrap: wrap; }
+  .legend .flag { cursor: default; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { .flag:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">
+  <span><strong>Portfolio demo</strong> — a fictional course excerpt with original review criteria. Click each numbered marker to read the reviewer feedback.</span>
+  <a href="../index.html#work">← Back to portfolio</a>
+</div>
+
+<div class="stage">
+  <div class="intro">
+    <h1>Inside a course quality review</h1>
+    <p>Course review is only as valuable as the feedback it produces. Below is a fictional module page with four things a trained reviewer would notice, followed by how a real review closes the loop. Each note follows the same craft: cite the evidence, explain the principle, and suggest a change the instructor can act on — with a worked example where possible, because "here's what that could look like" lands better than "consider improving this." And reviews open with strengths, because faculty are partners, not subjects.</p>
+  </div>
+
+  <div class="process" aria-label="The five stages of the review process">
+    <span>1 · Instructor self-assessment</span><span class="arrow" aria-hidden="true">→</span>
+    <span class="here">2 · Review</span><span class="arrow" aria-hidden="true">→</span>
+    <span>3 · Report</span><span class="arrow" aria-hidden="true">→</span>
+    <span>4 · Enhancements</span><span class="arrow" aria-hidden="true">→</span>
+    <span>5 · Verification &amp; certification</span>
+  </div>
+  <p style="font-size:0.9rem; color:#555; margin: 8px 0 16px; max-width: 66ch;">Before the reviewer ever opens the course, the instructor completes a worksheet and self-assessment against the <em>same checklist</em> the reviewer will use — documenting context (like whether objectives are instructor-written or state-mandated, which changes what a fair finding looks like), flagging known student pain points, and naming what they'd like targeted feedback on. The review starts with the instructor's voice, not the reviewer's judgment.</p>
+
+  <div class="legend"><span class="flag" aria-hidden="true">1</span><span>= reviewer annotation (click to open)</span></div>
+
+  <div class="course-page">
+    <div class="course-head">
+      <p class="crumb">PSY 101 · Sample Course (fictional)</p>
+      <h2>Module 3: Memory and Learning</h2>
+    </div>
+    <div class="course-body">
+
+      <h3>Module Objectives</h3>
+      <p>By the end of this module, you will be able to:</p>
+      <ul>
+        <li>Understand the three stages of memory
+          <button class="flag" aria-expanded="false" aria-controls="note1" id="flag1">1<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> Reviewer note about this objective</span></button>
+        </li>
+        <li>Compare classical and operant conditioning using real-world examples</li>
+      </ul>
+      <div class="note" id="note1" role="region" aria-labelledby="flag1">
+        <div class="n-head">Reviewer note · Measurable objectives</div>
+        <div class="n-body">
+          <p><strong>Evidence:</strong> The first objective uses "understand," while the second uses "compare … using real-world examples."</p>
+          <p><strong>Why it matters:</strong> "Understand" can't be observed or assessed — there's no way for a student to know when they've achieved it, or for the quiz to measure it. The second objective is a great model: the verb is observable and the criterion is built in.</p>
+          <p><strong>Suggestion:</strong> Consider revising to match the strength of your second objective — for example, "Describe the three stages of memory and give an example of each." Your Module 3 quiz already asks students to do exactly this, so the revision would bring the objective in line with an assessment that's already well designed.</p>
+        </div>
+      </div>
+
+      <h3>This Week's Activities</h3>
+      <ul>
+        <li>Read Chapter 6 (pp. 180–214)</li>
+        <li>Watch: "How Memories Form" video lecture (18 min)
+          <button class="flag" aria-expanded="false" aria-controls="note2" id="flag2">2<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> Reviewer note about this video</span></button>
+        </li>
+        <li>Complete the Memory Palace practice exercise
+          <button class="flag" aria-expanded="false" aria-controls="note3" id="flag3">3<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> Reviewer note about this exercise</span></button>
+        </li>
+      </ul>
+      <div class="note" id="note2" role="region" aria-labelledby="flag2">
+        <div class="n-head">Reviewer note · Media accessibility</div>
+        <div class="n-body">
+          <p><strong>Evidence:</strong> The video lecture plays without captions, and no transcript is linked on the page.</p>
+          <p><strong>Why it matters:</strong> Captions are essential for students who are deaf or hard of hearing — and they benefit far more students than that: anyone studying in a noisy place, watching without headphones, or processing English as an additional language.</p>
+          <p><strong>Suggestion:</strong> The platform's auto-captioning gets you 80% of the way in one click; a 15-minute cleanup pass handles the rest. If it would help, the captioning workshop covers the exact workflow for videos like this one — and I'm happy to walk through the first one together.</p>
+        </div>
+      </div>
+      <div class="note" id="note3" role="region" aria-labelledby="flag3">
+        <div class="n-head">Reviewer note · Instructions & learner support</div>
+        <div class="n-body">
+          <p><strong>Evidence:</strong> The Memory Palace exercise asks students to "submit your completed palace," but the page doesn't say what format to submit, where, or what a strong submission looks like.</p>
+          <p><strong>Why it matters:</strong> Ambiguous logistics generate a predictable wave of "what do I actually turn in?" emails — and quietly disadvantage first-generation students, who are least likely to ask.</p>
+          <p><strong>Suggestion:</strong> Two sentences would close the gap: the expected format and length, and a link to one example. The strong example you already share in your week-3 announcement would work perfectly here — moving it onto the page puts it where students look first.</p>
+        </div>
+      </div>
+
+      <h3>Graded Discussion: Memory in Your Life</h3>
+      <p>Post about a time a memory strategy helped or failed you. Reply to two classmates. Worth 20 points.
+        <button class="flag" aria-expanded="false" aria-controls="note4" id="flag4">4<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);"> Reviewer note about this discussion</span></button>
+      </p>
+      <div class="note" id="note4" role="region" aria-labelledby="flag4">
+        <div class="n-head">Reviewer note · Grading transparency</div>
+        <div class="n-body">
+          <p><strong>Evidence:</strong> The discussion is worth 20 points, but no criteria explain how those points are earned — is a two-sentence reply worth the same as a substantive one?</p>
+          <p><strong>Why it matters:</strong> When students can't see how work is evaluated, grading feels arbitrary even when it isn't — and discussion quality drops to the minimum that seems safe.</p>
+          <p><strong>Suggestion:</strong> Even a three-line breakdown (initial post 10 pts, each reply 5 pts, with one sentence on what "substantive" means) changes behavior. If you'd like, the simple discussion rubric template takes about ten minutes to adapt and attaches directly to the assignment.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="course-page" style="margin-top:22px;">
+    <div class="course-head" style="background:#083E42;">
+      <p class="crumb">The other half of the review</p>
+      <h2>From findings to certification</h2>
+    </div>
+    <div class="course-body">
+      <p style="font-size:0.95rem; color:#444;">A report isn't the end of a review — it's the midpoint. Here's the structure the full review follows (fictional data, real process):</p>
+
+      <h3>Course strengths — always first</h3>
+      <ul>
+        <li>Consistent module structure with content sectioned by topic for easy navigation</li>
+        <li>Instructor-created walkthrough videos that set clear expectations for asynchronous learners</li>
+        <li>Weekly overview pages that frame what's ahead before stating the objectives</li>
+      </ul>
+
+      <h3>Prioritized action items</h3>
+      <ul>
+        <li><strong>High</strong> — Revise the "understand" objective to a measurable verb <em>(worked example provided in the note)</em> · target: 2 weeks</li>
+        <li><strong>Medium</strong> — Add grading criteria to the discussion · target: 2 weeks</li>
+        <li><strong>Low</strong> — Caption the video lecture and post logistics for the practice exercise · target: next term prep</li>
+      </ul>
+
+      <h3>Verification review — closing the loop</h3>
+      <p style="font-size:0.95rem;">Ten days after the report, the reviewer returns to the course, confirms each agreed item is implemented, and signs off. The instructor gets certification, not just critique — and the course gets a scheduled future re-review date so quality stays a cycle, not a one-time event.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.flag').forEach(function (btn) {
+  if (!btn.getAttribute('aria-controls')) return;
+  btn.addEventListener('click', function () {
+    const note = document.getElementById(btn.getAttribute('aria-controls'));
+    const open = note.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+});
+</script>
+</body>
+</html>
