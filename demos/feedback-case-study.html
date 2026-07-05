@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Consultation Feedback System — Daniel Jang</title>
+<meta name="description" content="Designing a post-consultation feedback survey that turns faculty support into measurable, improvable data.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F5F0; --ink: #1A2426; --ink-soft: #3F4E4F;
+    --evergreen: #0E5A5E; --evergreen-deep: #083E42; --marigold: #C0392B;
+    --line: #D5D0C5; --card: #FCFBF7; --focus: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Public Sans", -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 1.125rem; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--evergreen-deep); color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+  .wrap { max-width: 48rem; margin: 0 auto; padding: 0 1.5rem; }
+  header { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+  .wordmark { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  .wordmark span { color: var(--evergreen); }
+  main { padding: 3.5rem 0 4rem; }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--evergreen); display: block; margin-bottom: 0.8rem; }
+  h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(1.9rem, 4.5vw, 2.7rem); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.2rem; max-width: 24ch; }
+  .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 2.5rem; }
+  .meta span { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; padding: 0.25rem 0.7rem; border-radius: 999px; background: rgba(14, 90, 94, 0.12); color: var(--evergreen-deep); }
+  h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 1.45rem; margin: 2.6rem 0 0.8rem; }
+  p + p { margin-top: 0.9rem; }
+  a { color: var(--evergreen-deep); font-weight: 500; }
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; margin: 1.4rem 0; }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.2rem; }
+  .stat .num { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.9rem; font-weight: 700; color: var(--evergreen-deep); line-height: 1.1; }
+  .stat .label { font-size: 0.9rem; color: var(--ink-soft); margin-top: 0.3rem; }
+  .pull { border-left: 4px solid var(--marigold); padding: 0.3rem 0 0.3rem 1.2rem; margin: 1.6rem 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--evergreen-deep); max-width: 32ch; }
+  .demo-embed { margin: 1.6rem 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #ECEAE4; }
+  .demo-embed iframe { display: block; width: 100%; height: 780px; border: none; }
+  .demo-embed-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.7rem 1.1rem; background: var(--evergreen-deep); color: #E6F0EE; font-size: 0.9rem; flex-wrap: wrap; }
+  .demo-embed-bar a { color: #F5B7A6; }
+  ol.flow { padding-left: 1.3rem; margin: 0.8rem 0; }
+  ol.flow li { margin: 0.5rem 0; }
+  .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 2.5rem; background: var(--evergreen-deep); color: #fff; text-decoration: none; font-weight: 600; padding: 0.7rem 1.5rem; border-radius: 8px; }
+  .back:hover { background: var(--evergreen); }
+  footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+  <div class="wrap"><a class="wordmark" href="../index.html">Daniel Jang<span>.</span></a></div>
+</header>
+<main id="main">
+  <article class="wrap">
+    <span class="eyebrow">Case Study</span>
+    <h1>You can't improve a service you never measure.</h1>
+    <div class="meta">
+      <span>Survey design</span><span>Microsoft Forms</span><span>Microsoft Bookings</span><span>Power Automate</span><span>Assessment</span>
+    </div>
+
+    <h2>The gap: consultations with no feedback loop</h2>
+    <p>Our team offers instructional design and technology consultations to faculty — real, high-touch support booked through Microsoft Bookings. But when each meeting ended, nothing happened next. There was no feedback mechanism at all, which meant no way to know which consultation types were landing, whether faculty left with what they needed, or where the service should improve. Decisions about the service were being made on intuition because there was no data to make them on.</p>
+    <p>This wasn't just an internal quality question. Consultation effectiveness feeds institutional faculty-development evidence, so the instrument had to produce data that was aggregatable and reportable — not just readable.</p>
+
+    <div class="stat-row">
+      <div class="stat"><p class="num">6</p><p class="label">questions, deliberately sequenced — under 2 minutes to complete</p></div>
+      <div class="stat"><p class="num">30<span style="font-size:1.1rem;"> min</span></p><p class="label">after the appointment ends, the survey arrives automatically</p></div>
+      <div class="stat"><p class="num">2</p><p class="label">quantifiable ratings that aggregate into reportable effectiveness metrics</p></div>
+    </div>
+
+    <h2>The hard part was the questions</h2>
+    <p>The automation was the plumbing; the design challenge was the instrument itself. Six questions had to produce genuinely meaningful data without burning faculty goodwill, and every one earned its place:</p>
+    <ol class="flow">
+      <li><strong>Consultation focus first</strong> — so effectiveness ratings can later be segmented by service area (course design, LMS support, accessibility, and so on), turning one metric into a diagnostic.</li>
+      <li><strong>Two Likert ratings back to back</strong> — one measuring effectiveness against the service's actual purpose ("this consultation effectively supported my instructional design or technology needs"), one measuring actionability ("I left with a clear next step"). Quick items placed together keep momentum.</li>
+      <li><strong>Neutral open-text wording</strong> — the experience question is phrased so it doesn't presume a positive experience, avoiding the leading-question trap that makes satisfaction data look better than the service is.</li>
+      <li><strong>Closing forward-looking</strong> — the final question asks what would improve future consultations, ending on improvement rather than praise, which yields more actionable comments.</li>
+    </ol>
+
+    <p class="pull">A survey that only confirms you're doing great isn't measurement — it's decoration.</p>
+
+    <h2>How it reaches faculty</h2>
+    <ol class="flow">
+      <li>A faculty member books and attends a consultation through Microsoft Bookings.</li>
+      <li>Thirty minutes after the appointment ends, an automated flow sends the survey — soon enough that the meeting is fresh, late enough that it doesn't interrupt whatever the consultation set in motion.</li>
+      <li>The message is personalized, not boilerplate — a deliberate choice to make the request feel like a colleague asking rather than a system demanding, because response rate is a design problem too.</li>
+      <li>Responses log automatically for aggregation and reporting.</li>
+    </ol>
+
+    <h2>The survey</h2>
+    <p>An interactive sample — the actual question design with placeholder consultant names:</p>
+    <div class="demo-embed">
+      <div class="demo-embed-bar"><span>Interactive sample — nothing is collected</span><a href="feedback-form.html">Open full page ↗</a></div>
+      <iframe src="feedback-form.html" title="Interactive sample of the post-consultation feedback survey" loading="lazy"></iframe>
+    </div>
+
+    <h2>Where it stands</h2>
+    <p>The system is in active pilot. That's a deliberate phase, not a caveat: before treating the data as truth, I'm evaluating the instrument itself — starting with whether the two optional open-text questions actually get answered. If completion data shows faculty skip them, the questions get redesigned or restructured, because an unanswered question is occupying survey real estate that a better question could use. Measuring the measurement tool is part of the job.</p>
+
+    <h2>What's next</h2>
+    <p>Iterate the form based on pilot response patterns, then close the loop the data was built for: segment effectiveness ratings by consultation type, feed the results into service planning, and let faculty feedback — not intuition — set the improvement agenda.</p>
+
+    <a class="back" href="../index.html#work">← Back to all work</a>
+  </article>
+</main>
+<footer>
+  <div class="wrap"><p>© 2026 Daniel Jang — <a href="../accessibility.html">accessibility statement</a></p></div>
+</footer>
+</body>
+</html>
