@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — Caption Cleanup: Before &amp; After | Daniel Jang</title>
+<meta name="description" content="Portfolio demo showing how raw auto-generated captions become WCAG-conformant captions, and why each fix matters.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.6; }
+  .demo-bar {
+    max-width: 900px; margin: 0 auto 24px;
+    background: #17231E; color: #F5F3ED;
+    border-radius: 10px; padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .demo-bar a { color: #F5B7A6; font-weight: 600; }
+  .demo-bar a:focus-visible { outline: 3px solid #F5B7A6; outline-offset: 2px; }
+  .stage { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.3rem; font-weight: 600; color: #083E42; margin-bottom: 4px; }
+  .sub { color: #555; font-size: 0.95rem; margin-bottom: 20px; max-width: 62ch; }
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .panels { grid-template-columns: 1fr; } }
+  .panel { background: #fff; border: 1px solid #d8d5cc; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+  .panel-head { padding: 10px 16px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .panel-head.before { background: #f6e8e6; color: #8E2A20; }
+  .panel-head.after { background: #e4ece8; color: #083E42; }
+  .captions {
+    font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; line-height: 1.7;
+    padding: 16px; white-space: pre-wrap; flex: 1; min-height: 260px;
+  }
+  .captions mark { background: #FCE8D9; color: #17231E; border-radius: 3px; padding: 0 2px; }
+  .controls { display: flex; gap: 10px; margin: 18px 0; flex-wrap: wrap; align-items: center; }
+  button {
+    font-family: inherit; font-size: 0.95rem; font-weight: 600; min-height: 44px;
+    padding: 0.6rem 1.4rem; border-radius: 8px; border: none; cursor: pointer;
+  }
+  .primary { background: #083E42; color: #fff; }
+  .primary:hover { background: #0E5A5E; }
+  .ghost { background: transparent; border: 1.5px solid #0E5A5E; color: #083E42; }
+  .ghost[aria-pressed="true"] { background: rgba(14,90,94,0.1); }
+  button:focus-visible { outline: 3px solid #C0392B; outline-offset: 2px; }
+  .why { background: #fff; border: 1px solid #d8d5cc; border-radius: 12px; padding: 18px 20px; margin-top: 4px; display: none; }
+  .why h2 { font-size: 1rem; font-weight: 600; color: #083E42; margin-bottom: 8px; }
+  .why ul { padding-left: 1.2rem; }
+  .why li { font-size: 0.92rem; margin: 6px 0; }
+  .why li strong { color: #8E2A20; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">
+  <span><strong>Portfolio demo</strong> — from a faculty training on video accessibility. Sample transcript, original content.</span>
+  <a href="../index.html#work">← Back to portfolio</a>
+</div>
+
+<div class="stage">
+  <h1>Auto-captions aren't accessible captions</h1>
+  <p class="sub">Auto-generated captions are a starting point, not a finish line. This sample shows the cleanup pass I teach faculty to apply — press the button to transform the raw output, then reveal why each fix matters for WCAG conformance.</p>
+
+  <div class="panels">
+    <div class="panel">
+      <div class="panel-head before">Before — raw auto-captions</div>
+      <div class="captions" id="before">so today were going to talk
+about excess ability in your
+course videos um the first
+thing you want to
+check is weather your captions
+are accurate because студents
+who are deaf or hard of hearing
+rely on them completely and to
+sync with the audio ok so lets
+look at the three most common
+airers that auto captioning
+makes in lecture recordings</div>
+    </div>
+    <div class="panel">
+      <div class="panel-head after">After — cleaned for WCAG</div>
+      <div class="captions" id="after" aria-live="polite">Press "Apply the cleanup" to see
+the corrected captions.</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="primary" id="apply">Apply the cleanup</button>
+    <button class="ghost" id="explain" aria-pressed="false" disabled>Show why each fix matters</button>
+  </div>
+
+  <div class="why" id="why">
+    <h2>What changed, and the WCAG reasoning</h2>
+    <ul>
+      <li><strong>Misheard words corrected</strong> ("excess ability" → "accessibility," "weather" → "whether," "airers" → "errors") — caption accuracy is the substance of WCAG 1.2.2; a caption that says the wrong words fails its entire purpose.</li>
+      <li><strong>Filler removed</strong> ("um," "ok so") — verbatim isn't the goal for edited educational video; readable meaning is. Cleaned captions reduce cognitive load without changing content.</li>
+      <li><strong>Punctuation and capitalization added</strong> — sentence boundaries are how readers parse meaning at reading speed; a wall of lowercase text forces viewers to do the parsing themselves.</li>
+      <li><strong>Line lengths balanced</strong> (roughly 32–42 characters, breaking at natural phrase boundaries) — so captions are readable in the time they're on screen and don't split phrases mid-thought.</li>
+      <li><strong>Garbled characters fixed</strong> — auto-captioning occasionally inserts wrong-alphabet artifacts; every character has to be real text for screen readers consuming the transcript downstream.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const cleaned = `So today we're going to talk
+about accessibility in your
+course videos.
+
+The first thing you want to check
+is whether your captions are
+accurate, because students who
+are deaf or hard of hearing rely
+on them completely — and to sync
+with the audio.
+
+Let's look at the three most
+common errors that auto-captioning
+makes in lecture recordings.`;
+
+document.getElementById('apply').addEventListener('click', function () {
+  document.getElementById('after').textContent = cleaned;
+  const ex = document.getElementById('explain');
+  ex.disabled = false;
+  this.disabled = true;
+  this.textContent = 'Cleanup applied ✓';
+});
+document.getElementById('explain').addEventListener('click', function () {
+  const w = document.getElementById('why');
+  const open = w.style.display === 'block';
+  w.style.display = open ? 'none' : 'block';
+  this.setAttribute('aria-pressed', String(!open));
+});
+</script>
+</body>
+</html>
