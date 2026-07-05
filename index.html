@@ -401,7 +401,48 @@
   }
   .aside-box h3 { font-family: "Bricolage Grotesque", sans-serif; color: #fff; margin-bottom: 0.8rem; font-size: 1.15rem; }
   .aside-box a { color: #F5B7A6; font-weight: 600; }
+  .profile-card {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 1.3rem;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    background: #fff;
+    text-decoration: none;
+  }
+  .profile-card:hover .pc-cta { text-decoration: underline; text-underline-offset: 3px; }
+  .aside-box .profile-card:focus-visible { outline: 3px solid #F5B7A6; outline-offset: 3px; }
+  .pc-avatar {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--evergreen-deep);
+  }
+  .pc-text { display: flex; flex-direction: column; gap: 0.1rem; min-width: 0; }
+  .aside-box .pc-name { color: var(--ink); font-weight: 600; font-size: 0.98rem; }
+  .aside-box .pc-headline { color: var(--ink-soft); font-size: 0.82rem; line-height: 1.4; }
+  .aside-box .pc-cta { color: var(--evergreen-deep); font-weight: 600; font-size: 0.85rem; margin-top: 0.25rem; }
   .aside-box a:focus-visible { outline-color: #F5B7A6; }
+
+  .to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-height: 44px;
+    margin-top: 1.8rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--evergreen);
+    text-decoration: none;
+    border-bottom: 1.5px solid transparent;
+  }
+  .to-top:hover { color: var(--evergreen-deep); border-bottom-color: var(--evergreen-deep); }
+  .to-top-row { display: flex; justify-content: flex-end; }
 
   footer {
     border-top: 1px solid var(--line);
@@ -495,6 +536,7 @@
           <a class="demo-link" href="demos/kudos-case-study.html">Read the case study<span class="visually-hidden"> of the kudos card initiative</span></a>
         </article>
       </div>
+      <div class="to-top-row"><a class="to-top" href="#top">↑ Back to top</a></div>
     </div>
   </section>
 
@@ -524,6 +566,7 @@
           <dd>Professional development courses, workshops, and one-on-one consultations designed with a warm, options-forward approach that respects faculty agency.</dd>
         </div>
       </dl>
+      <div class="to-top-row"><a class="to-top" href="#top">↑ Back to top</a></div>
     </div>
   </section>
 
@@ -538,6 +581,7 @@
         <li><span>Canvas Certified Technical Admin</span><a class="verify-btn" href="https://badges.parchment.com/public/assertions/KApCSftAQj6ykWiLuXG9hw" target="_blank" rel="noopener">Verify<span class="visually-hidden"> Canvas Certified Technical Admin credential (opens in new tab)</span></a></li>
         <li><span>Instructional Design Certificate, Association for Talent Development (ATD)</span><a class="verify-btn" href="https://www.credly.com/badges/57b349fb-5eb6-46c7-83c9-7c7f5fdf115e/public_url" target="_blank" rel="noopener">Verify<span class="visually-hidden"> ATD Instructional Design Certificate credential (opens in new tab)</span></a></li>
       </ul>
+      <div class="to-top-row"><a class="to-top" href="#top">↑ Back to top</a></div>
     </div>
   </section>
 
@@ -586,6 +630,7 @@
           <div class="tl-chips"><span>Learning science</span><span>Educational technology</span></div>
         </li>
       </ol>
+      <div class="to-top-row"><a class="to-top" href="#top">↑ Back to top</a></div>
     </div>
   </section>
 
@@ -600,10 +645,18 @@
       <div class="aside-box" id="contact">
         <h3>Let's connect</h3>
         <p>I'm always glad to talk instructional design, accessibility, and ed tech — whether you're a fellow designer, a faculty member, or someone curious about the field. Everything on this site links to a live demo, case study, or verified credential, so explore freely.</p>
-        <p style="margin-top: 1rem;"><a href="https://www.linkedin.com/in/jangdaniel/">Connect on LinkedIn</a><br>
-        <a href="mailto:hello@jangdaniel.com">hello@jangdaniel.com</a></p>
+        <p style="margin-top: 1rem;"><a href="mailto:hello@jangdaniel.com">hello@jangdaniel.com</a></p>
+        <a class="profile-card" href="https://www.linkedin.com/in/jangdaniel/">
+          <img class="pc-avatar" src="assets/headshot.jpg" alt="" width="52" height="52">
+          <span class="pc-text">
+            <span class="pc-name">Daniel Jang, MSEd</span>
+            <span class="pc-headline">Instructional Designer | Digital Accessibility (CPACC) | Canvas Certified Admin | Former Educator</span>
+            <span class="pc-cta">View LinkedIn profile →</span>
+          </span>
+        </a>
       </div>
     </div>
+    <div class="wrap to-top-row"><a class="to-top" href="#top">↑ Back to top</a></div>
   </section>
 </main>
 
