@@ -191,6 +191,22 @@
     flex-direction: column;
     gap: 0.7rem;
   }
+  .card h3 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .card p { color: var(--ink-soft); font-size: 0.98rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.6rem; }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.78rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(14, 90, 94, 0.12);
+    color: var(--evergreen-deep);
+  }
   .verify-btn {
     display: inline-flex;
     align-items: center;
@@ -206,7 +222,13 @@
     white-space: nowrap;
   }
   .verify-btn:hover { background: rgba(14, 90, 94, 0.08); }
-  .creds li { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 
   .demo-link {
     display: inline-flex;
@@ -224,46 +246,25 @@
   }
   .demo-link:hover { background: var(--evergreen); }
 
-  /* ---------- Timeline (horizontal) ---------- */
-  .timeline-scroller {
-    overflow-x: auto;
-    padding-bottom: 1rem;
-    scroll-snap-type: x proximity;
-    -webkit-overflow-scrolling: touch;
-  }
-  .timeline-scroller:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-  .timeline {
-    list-style: none;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 270px;
-    gap: 1.1rem;
-    position: relative;
-    padding-top: 2rem;
-    min-width: min-content;
-  }
+  /* ---------- Timeline ---------- */
+  .timeline { list-style: none; position: relative; max-width: 46rem; }
   .timeline::before {
     content: "";
     position: absolute;
-    top: 7px;
-    left: 8px;
-    right: 8px;
-    height: 2px;
+    left: 7px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
     background: var(--line);
   }
-  .timeline li {
-    position: relative;
-    scroll-snap-align: start;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 1.1rem 1.2rem;
-  }
+  .timeline li { position: relative; padding: 0 0 2.2rem 2.2rem; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li.tl-phase { padding-bottom: 1.1rem; }
   .timeline li:not(.tl-phase)::before {
     content: "";
     position: absolute;
     left: 0;
-    top: -2rem;
+    top: 6px;
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -277,58 +278,79 @@
     letter-spacing: 0.08em;
     color: var(--evergreen);
     display: block;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.15rem;
   }
   .tl-date .dur { color: var(--ink-soft); letter-spacing: 0; }
   .timeline h3 {
     font-family: "Bricolage Grotesque", sans-serif;
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 600;
     line-height: 1.3;
-    margin-bottom: 0.15rem;
   }
-  .tl-org { color: var(--ink-soft); font-weight: 500; font-size: 0.92rem; margin-bottom: 0.7rem; }
+  .tl-org { color: var(--ink-soft); font-weight: 500; margin-bottom: 0.5rem; }
   .tl-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; }
   .tl-chips span {
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.75rem;
-    padding: 0.2rem 0.6rem;
+    font-size: 0.78rem;
+    padding: 0.22rem 0.65rem;
     border-radius: 999px;
     background: rgba(14, 90, 94, 0.12);
     color: var(--evergreen-deep);
   }
   .timeline li.current .tl-chips span { background: rgba(192, 57, 43, 0.1); color: #8E2A20; }
   .tl-phase {
-    background: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    display: flex;
-    align-items: flex-start;
-    writing-mode: vertical-rl;
+    list-style: none;
+    position: relative;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--marigold);
     font-weight: 500;
   }
-  .timeline li.tl-phase { grid-auto-columns: auto; width: 2rem; }
   .tl-phase::before {
     content: "";
     position: absolute;
     left: 4px;
-    top: -1.75rem;
+    top: 4px;
     width: 8px;
     height: 8px;
     background: var(--marigold);
     transform: rotate(45deg);
   }
-  .scroll-hint {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    margin-top: 0.4rem;
+  /* ---------- Expertise table (rubric-style) ---------- */
+  .rubric { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--card); }
+  .rubric-row {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) 2.2fr;
+    border-top: 1px solid var(--line);
+  }
+  .rubric-row:first-child { border-top: none; }
+  .rubric-row dt {
+    padding: 1.1rem 1.3rem;
+    font-weight: 600;
+    background: rgba(14, 90, 94, 0.07);
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+  .rubric-row dd { padding: 1.1rem 1.3rem; color: var(--ink-soft); font-size: 0.98rem; }
+  @media (max-width: 560px) {
+    .rubric-row { grid-template-columns: 1fr; }
+    .rubric-row dd { padding-top: 0; }
+  }
+
+  /* ---------- Credentials ---------- */
+  .creds { display: flex; flex-wrap: wrap; gap: 0.7rem; list-style: none; }
+  .creds li {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
   /* ---------- About + contact ---------- */
   .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
@@ -419,6 +441,7 @@
           <h3>Course Quality Certification Program</h3>
           <p>Helped design and operate a tiered internal course quality framework grounded in Quality Matters principles — managing reviews, faculty communications, and certification for online courses across disciplines.</p>
           <div class="tags"><span class="tag">Quality Matters</span><span class="tag">Course Review</span><span class="tag">Program Design</span></div>
+          <a class="demo-link" href="demos/course-review.html">See a sample review<span class="visually-hidden"> showing course quality feedback in action</span></a>
         </article>
         <article class="card">
           <h3>Automated Certificate Workflow</h3>
@@ -436,6 +459,7 @@
           <h3>Course Redesign for the AI Era</h3>
           <p>Led a redesign proposal for a first-year College Success course, refreshing it for AI-era relevance with hands-on activities that build students' critical AI literacy alongside study skills.</p>
           <div class="tags"><span class="tag">Course Design</span><span class="tag">AI Literacy</span><span class="tag">Student Success</span></div>
+          <a class="demo-link" href="demos/ai-activity.html">View a sample activity<span class="visually-hidden"> from the AI-era course redesign</span></a>
         </article>
         <article class="card">
           <h3>Faculty Consultation Feedback System</h3>
@@ -500,7 +524,6 @@
     <div class="wrap">
       <p class="module-label">Module 04 — Experience</p>
       <h2>The path so far</h2>
-      <div class="timeline-scroller" tabindex="0" role="region" aria-label="Career timeline, scrolls horizontally">
       <ol class="timeline">
         <li class="tl-phase">Chapter 3 — Designing at scale</li>
         <li class="current">
@@ -542,8 +565,6 @@
           <div class="tl-chips"><span>Learning science</span><span>Educational technology</span></div>
         </li>
       </ol>
-      </div>
-      <p class="scroll-hint" aria-hidden="true">← scroll for the full journey →</p>
     </div>
   </section>
 
