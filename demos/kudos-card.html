@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — "Better Together" Kudos Card Tool | Daniel Jang</title>
+<meta name="description" content="Portfolio demo of an interactive employee appreciation card generator built with WCAG AA compliance.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; }
+  .demo-bar {
+    max-width: 900px; margin: 0 auto 24px;
+    background: #17231E; color: #F5F3ED;
+    border-radius: 10px; padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .demo-bar a { color: #F5B7A6; font-weight: 600; }
+  .demo-bar a:focus-visible { outline: 3px solid #F5B7A6; outline-offset: 2px; }
+  .tool { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
+  @media (max-width: 720px) { .tool { grid-template-columns: 1fr; } }
+  .panel { background: #fff; border: 1px solid #d8d5cc; border-radius: 12px; padding: 1.4rem; }
+  .panel h1 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #1a2e4a; }
+  label { display: block; font-size: 0.82rem; font-weight: 500; margin: 0.9rem 0 0.3rem; color: #444; }
+  input, textarea, select {
+    width: 100%; padding: 0.55rem 0.7rem; font-family: inherit; font-size: 0.95rem;
+    border: 1.5px solid #b9b5aa; border-radius: 7px; background: #fff; color: #17231E;
+  }
+  textarea { resize: vertical; min-height: 74px; }
+  input:focus-visible, textarea:focus-visible, select:focus-visible, .theme-btn:focus-visible {
+    outline: 3px solid #A20B35; outline-offset: 2px;
+  }
+  .themes { display: flex; gap: 8px; flex-wrap: wrap; }
+  .theme-btn {
+    width: 44px; height: 44px; border-radius: 8px; border: 2px solid transparent; cursor: pointer;
+  }
+  .theme-btn[aria-pressed="true"] { border-color: #17231E; box-shadow: 0 0 0 2px #fff inset; }
+  .card {
+    aspect-ratio: 5 / 3.5; border-radius: 14px; padding: clamp(18px, 4vw, 34px);
+    display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.16);
+  }
+  .card .badge {
+    align-self: flex-start; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 99px; border: 1px solid;
+  }
+  .card .headline { text-align: center; }
+  .card .kicker { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 0.85rem; display: block; margin-bottom: 6px; }
+  .card .title { font-size: clamp(1.3rem, 3.5vw, 2rem); font-weight: 500; line-height: 1.2; }
+  .card .msg { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 0.9rem; margin-top: 10px; line-height: 1.55; max-width: 80%; margin-left: auto; margin-right: auto; }
+  .card .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+  .card .foot .label { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 3px; }
+  .card .foot .who { font-size: 1rem; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">
+  <span><strong>Portfolio demo</strong> — an interactive appreciation card tool originally deployed with Microsoft Forms + Power Automate delivery. Fully keyboard-operable, WCAG AA verified.</span>
+  <a href="../index.html#work">← Back to portfolio</a>
+</div>
+
+<div class="tool">
+  <div class="panel">
+    <h1>Build a kudos card</h1>
+    <label for="to">Recognized colleague</label>
+    <input id="to" value="Jordan Lee" maxlength="40">
+    <label for="from">From</label>
+    <input id="from" value="Sam Rivera" maxlength="40">
+    <label for="cat">Recognition category</label>
+    <select id="cat">
+      <option>Team Player</option>
+      <option>Going Above &amp; Beyond</option>
+      <option>Innovation</option>
+      <option>Student-Centered</option>
+    </select>
+    <label for="msg">Message (optional)</label>
+    <textarea id="msg" maxlength="180">Thank you for jumping in on the accreditation review with zero notice. You made a hard week easier for all of us.</textarea>
+    <label id="theme-label">Theme</label>
+    <div class="themes" role="group" aria-labelledby="theme-label">
+      <button class="theme-btn" data-theme="navy" style="background:#1a2e4a;" aria-label="Navy and gold theme" aria-pressed="true"></button>
+      <button class="theme-btn" data-theme="forest" style="background:#2d5a3d;" aria-label="Forest and sage theme" aria-pressed="false"></button>
+      <button class="theme-btn" data-theme="cream" style="background:#f5e9c8; border:2px solid #c9a84c;" aria-label="Cream and gold theme" aria-pressed="false"></button>
+    </div>
+  </div>
+
+  <div class="card" id="card" role="img" aria-label="Preview of the appreciation card">
+    <span class="badge" id="c-badge">Team Player</span>
+    <div class="headline">
+      <span class="kicker" id="c-kicker">— employee appreciation —</span>
+      <div class="title" id="c-title">Better Together,<br><em id="c-em" style="font-style:normal;">Thanks to You</em></div>
+      <p class="msg" id="c-msg"></p>
+    </div>
+    <div class="foot">
+      <div><span class="label" id="l-from">From</span><span class="who" id="c-from"></span></div>
+      <div style="text-align:right;"><span class="label" id="l-to">Recognized</span><span class="who" id="c-to"></span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const themes = {
+  navy:   { bg:'#1a2e4a', text:'#faf7f0', accent:'#e8c97a', sub:'#d5cfc2', badgeBg:'rgba(232,201,122,0.15)', badgeBorder:'#c9a84c', badgeText:'#e8c97a' },
+  forest: { bg:'#2d5a3d', text:'#f3f7f0', accent:'#cfe3c2', sub:'#d9e6d0', badgeBg:'rgba(207,227,194,0.15)', badgeBorder:'#a8c791', badgeText:'#d9ecc8' },
+  cream:  { bg:'#faf7f0', text:'#1a2e4a', accent:'#8a6a1f', sub:'#4c5568', badgeBg:'rgba(138,106,31,0.1)', badgeBorder:'#8a6a1f', badgeText:'#8a6a1f' }
+};
+function render() {
+  const t = themes[document.querySelector('.theme-btn[aria-pressed="true"]').dataset.theme];
+  const card = document.getElementById('card');
+  card.style.background = t.bg;
+  card.style.color = t.text;
+  document.getElementById('c-em').style.color = t.accent;
+  document.getElementById('c-kicker').style.color = t.sub;
+  document.getElementById('c-msg').style.color = t.sub;
+  ['l-from','l-to'].forEach(id => document.getElementById(id).style.color = t.sub);
+  const b = document.getElementById('c-badge');
+  b.style.background = t.badgeBg; b.style.borderColor = t.badgeBorder; b.style.color = t.badgeText;
+  b.textContent = document.getElementById('cat').value;
+  document.getElementById('c-from').textContent = document.getElementById('from').value || '—';
+  document.getElementById('c-to').textContent = document.getElementById('to').value || '—';
+  const m = document.getElementById('msg').value.trim();
+  document.getElementById('c-msg').textContent = m ? '\u201C' + m + '\u201D' : '';
+  card.setAttribute('aria-label', 'Appreciation card recognizing ' + (document.getElementById('to').value || 'a colleague') + ' from ' + (document.getElementById('from').value || 'a colleague'));
+}
+document.querySelectorAll('.theme-btn').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('.theme-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+  btn.setAttribute('aria-pressed', 'true');
+  render();
+}));
+['to','from','cat','msg'].forEach(id => document.getElementById(id).addEventListener('input', render));
+render();
+</script>
+</body>
+</html>

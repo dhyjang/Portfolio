@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — Faculty Consultation Feedback Survey | Daniel Jang</title>
+<meta name="description" content="Portfolio demo of a post-consultation feedback survey designed for accreditation-aligned data collection.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.6; }
+  .demo-bar {
+    max-width: 640px; margin: 0 auto 24px;
+    background: #17231E; color: #F5F3ED;
+    border-radius: 10px; padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .demo-bar a { color: #F5B7A6; font-weight: 600; }
+  .demo-bar a:focus-visible { outline: 3px solid #F5B7A6; outline-offset: 2px; }
+  .survey { max-width: 640px; margin: 0 auto; background: #fff; border: 1px solid #d8d5cc; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .survey-head { background: #002A3A; padding: 28px 32px; }
+  .survey-head h1 { color: #fff; font-weight: 500; font-size: 1.4rem; margin-bottom: 4px; }
+  .survey-head .sub { color: rgba(255,255,255,0.75); font-size: 0.9rem; }
+  .survey-intro { padding: 20px 32px; background: #f5f4ef; border-bottom: 1px solid #e4e1d8; font-size: 0.95rem; color: #444; }
+  .survey-body { padding: 28px 32px 32px; }
+  .q { margin-bottom: 1.8rem; }
+  .q-label, legend { font-weight: 500; font-size: 1rem; color: #17231E; margin-bottom: 0.6rem; display: block; }
+  .q-label .opt, legend .opt { font-weight: 400; color: #63666A; font-size: 0.85rem; }
+  fieldset { border: none; }
+  .choice { display: flex; align-items: flex-start; gap: 10px; padding: 6px 0; }
+  .choice input { width: 18px; height: 18px; margin-top: 3px; accent-color: #A20B35; }
+  .choice label { font-size: 0.95rem; }
+  select, textarea {
+    width: 100%; padding: 0.6rem 0.75rem; font-family: inherit; font-size: 0.95rem;
+    border: 1.5px solid #a8a496; border-radius: 8px; background: #fff; color: #17231E;
+  }
+  textarea { resize: vertical; min-height: 84px; }
+  .likert { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 4px; }
+  .likert label {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    border: 1.5px solid #c9c5ba; border-radius: 8px; padding: 10px 4px;
+    font-size: 0.75rem; text-align: center; cursor: pointer; color: #444; min-height: 44px; justify-content: center;
+  }
+  .likert input { accent-color: #A20B35; width: 18px; height: 18px; }
+  .likert input:checked + span { font-weight: 600; color: #002A3A; }
+  .likert label:has(input:checked) { border-color: #A20B35; background: rgba(162,11,53,0.05); }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, .submit:focus-visible { outline: 3px solid #A20B35; outline-offset: 2px; }
+  .submit {
+    background: #002A3A; color: #fff; font-family: inherit; font-size: 1rem; font-weight: 600;
+    border: none; border-radius: 8px; padding: 0.8rem 2rem; cursor: pointer; min-height: 44px;
+  }
+  .submit:hover { background: #0f4459; }
+  .thanks { display: none; padding: 48px 32px; text-align: center; }
+  .thanks h2 { font-weight: 500; color: #002A3A; margin-bottom: 8px; }
+  .thanks p { color: #555; max-width: 40ch; margin: 0 auto; }
+  @media (max-width: 480px) { .likert { grid-template-columns: 1fr; } .likert label { flex-direction: row; justify-content: flex-start; padding: 8px 12px; } .survey-body, .survey-head, .survey-intro { padding-left: 20px; padding-right: 20px; } }
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">
+  <span><strong>Portfolio demo</strong> — a post-consultation survey designed as accreditation evidence (SACSCOC-aligned faculty development metrics). Nothing is collected; submitting shows the confirmation state.</span>
+  <a href="../index.html#work">← Back to portfolio</a>
+</div>
+
+<div class="survey">
+  <div class="survey-head">
+    <h1>Consultation Feedback</h1>
+    <p class="sub">Instructional Design &amp; Technology Services</p>
+  </div>
+  <p class="survey-intro">Thank you for meeting with us! Your feedback helps us improve our services and supports our commitment to faculty development. This survey takes under 2 minutes.</p>
+
+  <div class="survey-body" id="form-body">
+    <div class="q">
+      <fieldset>
+        <legend>1. Which best describes the focus of today's consultation?</legend>
+        <div class="choice"><input type="radio" name="focus" id="f1"><label for="f1">Course design or redesign</label></div>
+        <div class="choice"><input type="radio" name="focus" id="f2"><label for="f2">Canvas / LMS support</label></div>
+        <div class="choice"><input type="radio" name="focus" id="f3"><label for="f3">Accessibility or inclusive design</label></div>
+        <div class="choice"><input type="radio" name="focus" id="f4"><label for="f4">Educational technology</label></div>
+        <div class="choice"><input type="radio" name="focus" id="f5"><label for="f5">Course quality review</label></div>
+        <div class="choice"><input type="radio" name="focus" id="f6"><label for="f6">Other</label></div>
+      </fieldset>
+    </div>
+
+    <div class="q">
+      <label class="q-label" for="consultant">2. Who did you meet with?</label>
+      <select id="consultant">
+        <option>Select a consultant…</option>
+        <option>Sample Consultant A</option>
+        <option>Sample Consultant B</option>
+        <option>Sample Consultant C</option>
+      </select>
+    </div>
+
+    <div class="q">
+      <fieldset>
+        <legend>3. This consultation effectively supported my instructional design or technology needs.</legend>
+        <div class="likert">
+          <label><input type="radio" name="q3"><span>Strongly disagree</span></label>
+          <label><input type="radio" name="q3"><span>Disagree</span></label>
+          <label><input type="radio" name="q3"><span>Neutral</span></label>
+          <label><input type="radio" name="q3"><span>Agree</span></label>
+          <label><input type="radio" name="q3"><span>Strongly agree</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="q">
+      <fieldset>
+        <legend>4. I left the consultation with a clear next step.</legend>
+        <div class="likert">
+          <label><input type="radio" name="q4"><span>Strongly disagree</span></label>
+          <label><input type="radio" name="q4"><span>Disagree</span></label>
+          <label><input type="radio" name="q4"><span>Neutral</span></label>
+          <label><input type="radio" name="q4"><span>Agree</span></label>
+          <label><input type="radio" name="q4"><span>Strongly agree</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="q">
+      <label class="q-label" for="q5">5. How would you describe your consultation experience? <span class="opt">(optional)</span></label>
+      <textarea id="q5"></textarea>
+    </div>
+
+    <div class="q">
+      <label class="q-label" for="q6">6. What suggestions do you have for improving future consultations? <span class="opt">(optional)</span></label>
+      <textarea id="q6"></textarea>
+    </div>
+
+    <button class="submit" id="submit-btn">Submit feedback</button>
+  </div>
+
+  <div class="thanks" id="thanks" role="status">
+    <h2>Thank you!</h2>
+    <p>Your feedback was recorded and will help us keep improving consultations. (Demo only — nothing was actually collected.)</p>
+  </div>
+</div>
+
+<script>
+document.getElementById('submit-btn').addEventListener('click', function () {
+  document.getElementById('form-body').style.display = 'none';
+  document.getElementById('thanks').style.display = 'block';
+  document.getElementById('thanks').focus();
+});
+document.getElementById('thanks').setAttribute('tabindex', '-1');
+</script>
+</body>
+</html>
