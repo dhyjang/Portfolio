@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — AI Study Tool Activity (Course Redesign Sample) | Daniel Jang</title>
+<meta name="description" content="Portfolio sample of a scaffolded student activity teaching AI literacy through hands-on use of NotebookLM as a study tool.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.65; }
+  .demo-bar {
+    max-width: 760px; margin: 0 auto 24px;
+    background: #17231E; color: #F5F3ED;
+    border-radius: 10px; padding: 14px 20px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+    font-size: 14px;
+  }
+  .demo-bar a { color: #F5B7A6; font-weight: 600; }
+  .demo-bar a:focus-visible { outline: 3px solid #F5B7A6; outline-offset: 2px; }
+  .page { max-width: 760px; margin: 0 auto; background: #fff; border: 1px solid #d8d5cc; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .page-head { background: #002A3A; padding: 26px 34px; }
+  .page-head .crumb { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-bottom: 6px; }
+  .page-head h1 { color: #fff; font-weight: 500; font-size: 1.5rem; line-height: 1.3; }
+  .page-head .time { display: inline-block; margin-top: 10px; font-size: 0.8rem; background: rgba(255,255,255,0.12); color: #fff; padding: 4px 12px; border-radius: 99px; }
+  .page-body { padding: 30px 34px 36px; }
+  h2 { font-size: 1.15rem; font-weight: 600; color: #002A3A; margin: 1.8rem 0 0.6rem; padding-top: 1.2rem; border-top: 1px solid #e4e1d8; }
+  h2:first-of-type { margin-top: 1rem; border-top: none; padding-top: 0; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 1.1rem 0 0.3rem; }
+  p + p { margin-top: 0.7rem; }
+  ul, ol { padding-left: 1.4rem; margin: 0.5rem 0; }
+  li { margin: 0.3rem 0; }
+  .callout { border-radius: 10px; padding: 14px 18px; margin: 1rem 0; font-size: 0.95rem; }
+  .callout.why { background: #E8F0F5; border-left: 4px solid #002A3A; }
+  .callout.own { background: #FDF0F3; border-left: 4px solid #A20B35; }
+  .callout strong { display: block; margin-bottom: 4px; }
+  .reflect { background: #f5f4ef; border: 1px solid #e4e1d8; border-radius: 10px; padding: 16px 20px; margin: 0.8rem 0; }
+  .reflect .label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: #A20B35; font-weight: 600; margin-bottom: 4px; }
+  em.note { font-style: italic; color: #555; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<div class="demo-bar" role="note">
+  <span><strong>Portfolio sample</strong> — a student-facing activity from an AI-era redesign of a first-year College Success course. Institution and course identifiers genericized.</span>
+  <a href="../index.html#work">← Back to portfolio</a>
+</div>
+
+<div class="page">
+  <div class="page-head">
+    <p class="crumb">Module 5 · Activity</p>
+    <h1>Build Your AI Study Notebook</h1>
+    <span class="time">⏱ 20–30 minutes · Complete before the Module 5 discussion</span>
+  </div>
+  <div class="page-body">
+
+    <p>In this activity, you'll set up <strong>NotebookLM</strong> — a free AI tool from Google that works differently from chatbots you may have used. Instead of answering from the whole internet, NotebookLM only works with the sources <em>you</em> give it. That means when it answers your questions, it is drawing from your actual course materials — not making things up.</p>
+
+    <p>In this activity you will:</p>
+    <ul>
+      <li>Set up a NotebookLM notebook with your Module 5 course materials</li>
+      <li>Use NotebookLM's tools to study and explore the content</li>
+      <li>Reflect on how this tool could support your learning throughout college</li>
+    </ul>
+
+    <div class="callout why">
+      <strong>💡 Why this matters</strong>
+      AI tools are increasingly part of professional and academic life. Learning to use them thoughtfully — knowing what they are good for, what their limits are, and when to trust them — is a skill employers expect. This activity gives you hands-on experience with one tool you can start using in your other courses right away.
+    </div>
+
+    <h2>Part 1: Set Up Your Notebook <em class="note">(5–7 minutes)</em></h2>
+
+    <h3>Step 1 — Create your NotebookLM notebook</h3>
+    <p>Go to notebooklm.google.com and sign in with your school Google account. Click "New Notebook" and name it: <strong>Module 5 Study Notebook</strong>.</p>
+
+    <h3>Step 2 — Add your Module 5 sources</h3>
+    <p>Click "Add Source." You will add at least two sources — <strong>one instructor-created page and one textbook chapter</strong>:</p>
+    <ul>
+      <li><strong>Instructor-created pages</strong> (paste the page text in as a "Copied text" source): <em>AI Ethics and Academic Integrity in Practice</em>, <em>Digital Accessibility Foundations</em>, or <em>Civic Engagement — The Five Concepts</em></li>
+      <li><strong>Textbook chapters</strong> (upload your notes or paste key passages): the Module 5 chapters on critical thinking and communication, or on relationships in a diverse world</li>
+    </ul>
+
+    <div class="callout own">
+      <strong>Add a source of your own (optional but encouraged)</strong>
+      NotebookLM works best when you bring your own questions to it. You may add one additional source that connects Module 5 to something personally meaningful — a career field you're exploring, a current news story about digital access or AI, or notes from another class. Students who try this often find it the most interesting part of the activity.
+    </div>
+
+    <h3>Step 3 — Let it process, then check its work</h3>
+    <p>NotebookLM will take a moment to read your sources, then show an automatic summary in the Notebook Guide panel. <strong>Read that summary critically:</strong> does it accurately capture what your sources are about? This is your first act of AI literacy — verifying the tool before trusting it.</p>
+
+    <h2>Part 2: Explore and Study <em class="note">(10–12 minutes)</em></h2>
+    <p>Work through each task in order:</p>
+    <ol>
+      <li><strong>Ask a real question.</strong> Type a genuine question you have about the module content. Notice that NotebookLM cites which source each part of its answer came from — click a citation and confirm it says what the AI claims it says.</li>
+      <li><strong>Test its limits.</strong> Ask a question your sources <em>don't</em> answer. What does the tool do? Compare that behavior to what a general chatbot would do.</li>
+      <li><strong>Generate a study aid.</strong> Use the built-in tools to create a study guide or FAQ from your sources, and evaluate: what would you keep, and what would you fix before using it to study?</li>
+    </ol>
+
+    <h2>Part 3: Reflect <em class="note">(5–8 minutes)</em></h2>
+    <p>Answer in your Workbook — these connect to your Section 5 prompts:</p>
+    <div class="reflect">
+      <p class="label">Reflection 1</p>
+      <p>NotebookLM only answers from sources you provide. When would that limitation be exactly what you want — and when would it be a problem? Give one example of each from your own coursework.</p>
+    </div>
+    <div class="reflect">
+      <p class="label">Reflection 2</p>
+      <p>You verified one of the tool's citations in Part 2. How does "check the source" change when the summary is written by AI instead of a person? What's your personal rule going to be?</p>
+    </div>
+    <div class="reflect">
+      <p class="label">Reflection 3</p>
+      <p>Name one course you're taking next term where you could reuse this notebook approach — and one kind of assignment where using it would cross an academic integrity line. How do you know the difference?</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
