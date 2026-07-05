@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dan Jang — Instructional Designer</title>
+<title>Daniel Jang — Instructional Designer</title>
 <meta name="description" content="Daniel Jang is an instructional designer specializing in accessible, evidence-based course design, Canvas LMS administration, and educational technology automation.">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="theme-color" content="#083E42">
+<meta name="color-scheme" content="light">
 <link rel="canonical" href="https://jangdaniel.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jangdaniel.com/">
@@ -19,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Daniel Jang — Instructional Designer">
 <meta name="twitter:description" content="Accessible, evidence-based learning design. Certified accessibility professional, Canvas Certified Admin, Quality Matters Peer Reviewer.">
-<meta name="twitter:image" content="https://jangdaniel.com/assets/og-image-v2.png">
+<meta name="twitter:image" content="https://jangdaniel.com/assets/og-image-v3.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,6 +38,8 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  [id] { scroll-margin-top: 1.25rem; }
+  ::selection { background: var(--evergreen-deep); color: #fff; }
 
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
@@ -119,6 +122,7 @@
     margin-bottom: 1.2rem;
   }
   h1 {
+    text-wrap: balance;
     font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 700;
     font-size: clamp(2.2rem, 5.5vw, 3.8rem);
@@ -172,6 +176,7 @@
     margin-bottom: 0.6rem;
   }
   h2 {
+    text-wrap: balance;
     font-family: "Bricolage Grotesque", sans-serif;
     font-weight: 600;
     font-size: clamp(1.6rem, 3.5vw, 2.2rem);
@@ -405,6 +410,16 @@
     font-size: 0.95rem;
   }
   footer a { color: var(--evergreen-deep); font-weight: 500; }
+
+  @media print {
+    header nav, .hero-actions, .skip-link, .scroll-hint { display: none; }
+    body { background: #fff; color: #000; }
+    .aside-box { background: #fff; color: #000; border: 1px solid #999; }
+    .aside-box a { color: #000; }
+    .demo-link, .verify-btn { border: 1px solid #000; background: #fff; color: #000; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+    section { break-inside: avoid-page; }
+  }
 </style>
 </head>
 <body>
@@ -412,7 +427,7 @@
 
 <header>
   <div class="wrap nav">
-    <a class="wordmark" href="#top">Dan Jang<span>.</span></a>
+    <a class="wordmark" href="#top">Daniel Jang<span>.</span></a>
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="#work">Work</a></li>
@@ -579,12 +594,12 @@
       <div>
         <p class="module-label">Module 05 — About</p>
         <h2>From the classroom to the design studio</h2>
-        <p>I spent six years teaching math in DC Public Schools before moving into instructional design — first at Johns Hopkins Carey Business School and the University of Maryland School of Dentistry, and now in community college online learning. That classroom experience is the foundation of everything I design: I've been on the other side of the materials, and I know what clarity, structure, and access mean to a learner.</p>
-        <p>Today my work sits at the intersection of learning science, accessibility, and technology. Whether I'm reviewing a course against quality standards, building an automation that gives faculty their time back, or helping an institution think through responsible AI adoption, my goal is the same: learning experiences that work for everyone.</p>
+        <p>I spent six years teaching math in DC Public Schools before moving into instructional design — first at Johns Hopkins and the University of Maryland, now in community college online learning. That classroom experience is the foundation of everything I design: I know what clarity, structure, and access mean to a learner, because I've watched what happens when they're missing.</p>
+        <p>Today my work sits where learning science, accessibility, and technology meet: reviewing courses against national quality standards, building automations that give educators their time back, leading digital accessibility from audit to remediation, and helping institutions think through responsible AI. Whatever the project, the goal is the same — learning experiences that work for everyone, backed by systems that keep working after I've moved on.</p>
       </div>
       <div class="aside-box" id="contact">
         <h3>Let's connect</h3>
-        <p>I'm always glad to talk instructional design, accessibility, or ed-tech — whether you're a fellow designer, faculty member, or just curious.</p>
+        <p>I'm always glad to talk instructional design, accessibility, and ed tech — whether you're a fellow designer, a faculty member, or someone curious about the field. Everything on this site links to a live demo, case study, or verified credential, so explore freely.</p>
         <p style="margin-top: 1rem;"><a href="https://www.linkedin.com/in/jangdaniel/">Connect on LinkedIn</a><br>
         <a href="mailto:hello@jangdaniel.com">hello@jangdaniel.com</a></p>
       </div>
