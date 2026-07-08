@@ -40,6 +40,7 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   [id] { scroll-margin-top: 1.25rem; }
   ::selection { background: var(--evergreen-deep); color: #fff; }
+  .aside-box ::selection { background: #F5B7A6; color: #083E42; }
 
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) {
@@ -99,6 +100,9 @@
     color: var(--ink);
     text-decoration: none;
     letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
   .wordmark span { color: var(--evergreen); }
   nav ul { display: flex; gap: 1.6rem; list-style: none; flex-wrap: wrap; }
@@ -645,7 +649,8 @@
       <div class="aside-box" id="contact">
         <h3>Let's connect</h3>
         <p>I'm always glad to talk instructional design, accessibility, and ed tech — whether you're a fellow designer, a subject matter expert, or someone curious about the field. Everything on this site links to a live demo, case study, or verified credential, so explore freely.</p>
-        <p style="margin-top: 1rem;"><a href="mailto:info@jangdaniel.com">info@jangdaniel.com</a></p>
+        <p style="margin-top: 1rem;">Email:<br>
+        <a href="mailto:info@jangdaniel.com">info@jangdaniel.com</a></p>
         <a class="profile-card" href="https://www.linkedin.com/in/jangdaniel/">
           <img class="pc-avatar" src="assets/headshot.jpg" alt="" width="52" height="52">
           <span class="pc-text">
