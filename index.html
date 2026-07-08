@@ -723,7 +723,7 @@
       e.preventDefault();
       var styles = getComputedStyle(target);
       var scrollMarginTop = parseFloat(styles.scrollMarginTop) || 0;
-      var targetY = target.getBoundingClientRect().top + window.pageYOffset - scrollMarginTop;
+      var targetY = id === 'top' ? 0 : target.getBoundingClientRect().top + window.pageYOffset - scrollMarginTop;
       smoothScrollTo(targetY);
       history.pushState(null, '', '#' + id);
     });
