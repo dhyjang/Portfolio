@@ -662,7 +662,7 @@
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Daniel Jang. Built by hand with accessibility in mind — <a href="accessibility.html">accessibility statement</a> · <a href="#top">back to top</a>.</p>
+    <p>© 2026 Daniel Jang. Built by hand with accessibility in mind — <a href="accessibility.html">accessibility statement</a> · <a href="#top">back to top</a><span id="last-updated"></span>.</p>
   </div>
 </footer>
 <script>
@@ -728,6 +728,39 @@
       history.pushState(null, '', '#' + id);
     });
   });
+})();
+
+// Live "last updated" timestamp, pulled from the repo's latest commit.
+// Fails silently on any error (offline, rate-limited, API change) so the
+// footer just shows nothing extra rather than a broken or stale claim.
+(function () {
+  var el = document.getElementById('last-updated');
+  if (!el) return;
+
+  function render(dateStr) {
+    var d = new Date(dateStr);
+    if (isNaN(d)) return;
+    var formatted = d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    el.textContent = ' \u00b7 last updated ' + formatted;
+  }
+
+  try {
+    var cached = sessionStorage.getItem('lastUpdatedCommitDate');
+    if (cached) {
+      render(cached);
+      return;
+    }
+  } catch (e) { /* sessionStorage unavailable (private browsing etc.) — just fetch fresh */ }
+
+  fetch('https://api.github.com/repos/dhyjang/Portfolio/commits?per_page=1')
+    .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
+    .then(function (data) {
+      var date = data && data[0] && data[0].commit && data[0].commit.committer && data[0].commit.committer.date;
+      if (!date) return;
+      render(date);
+      try { sessionStorage.setItem('lastUpdatedCommitDate', date); } catch (e) {}
+    })
+    .catch(function () { /* silent — footer simply omits the timestamp */ });
 })();
 </script>
 </body>
