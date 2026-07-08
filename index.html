@@ -665,5 +665,52 @@
     <p>© 2026 Daniel Jang. Built by hand with accessibility in mind — <a href="accessibility.html">accessibility statement</a> · <a href="#top">back to top</a>.</p>
   </div>
 </footer>
+<script>
+// Smoother, distance-aware scroll for all in-page anchors (nav, back-to-top links, etc.)
+// Browser-native `scroll-behavior: smooth` uses a fixed, fairly abrupt curve —
+// this eases in and out, and scales duration to distance so short and long
+// jumps both feel natural rather than either too fast or too sluggish.
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function smoothScrollTo(targetY) {
+    var startY = window.pageYOffset;
+    var distance = targetY - startY;
+    if (reduceMotion || Math.abs(distance) < 2) {
+      window.scrollTo(0, targetY);
+      return;
+    }
+    var duration = Math.min(900, Math.max(350, Math.abs(distance) * 0.6));
+    var startTime = null;
+
+    function step(timestamp) {
+      if (startTime === null) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = id ? document.getElementById(id) : null;
+      if (!target) return;
+      e.preventDefault();
+      var styles = getComputedStyle(target);
+      var scrollMarginTop = parseFloat(styles.scrollMarginTop) || 0;
+      var targetY = target.getBoundingClientRect().top + window.pageYOffset - scrollMarginTop;
+      smoothScrollTo(targetY);
+      history.pushState(null, '', '#' + id);
+    });
+  });
+})();
+</script>
 </body>
 </html>
