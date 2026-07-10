@@ -72,6 +72,14 @@
 </footer>
 
 <script>
+function formatLocalDate(dateStr) {
+  var parts = String(dateStr).split('-');
+  if (parts.length !== 3) return dateStr;
+  var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
 fetch('posts.json')
   .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
   .then(function (posts) {
@@ -83,8 +91,7 @@ fetch('posts.json')
     posts.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
     container.innerHTML = posts.map(function (p) {
       var tags = (p.tags || []).map(function (t) { return '<span>' + t + '</span>'; }).join('');
-      var d = new Date(p.date);
-      var dateStr = isNaN(d) ? p.date : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      var dateStr = formatLocalDate(p.date);
       return '<a class="post-card" href="' + p.slug + '.html">' +
         '<span class="post-date">' + dateStr + '</span>' +
         '<h2 class="post-title">' + p.title + '</h2>' +
