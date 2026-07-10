@@ -739,14 +739,24 @@
 </main>
 
 <script>
+// Parses a plain YYYY-MM-DD date as local calendar date rather than letting
+// the Date constructor treat it as UTC midnight -- otherwise anyone west
+// of UTC sees the previous day's date after the timezone conversion.
+function formatLocalDate(dateStr) {
+  var parts = String(dateStr).split('-');
+  if (parts.length !== 3) return dateStr;
+  var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+  if (isNaN(d)) return dateStr;
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
 fetch('blog/posts.json')
   .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
   .then(function (posts) {
     if (!posts || !posts.length) return;
     posts.sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
     var p = posts[0];
-    var d = new Date(p.date);
-    var dateStr = isNaN(d) ? p.date : d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    var dateStr = formatLocalDate(p.date);
     document.getElementById('teaser-card').innerHTML =
       '<a class="card" style="display:block; text-decoration:none;" href="blog/' + p.slug + '.html">' +
       '<span class="module-label" style="margin-bottom:0.4rem;">' + dateStr + '</span>' +
