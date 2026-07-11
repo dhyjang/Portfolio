@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where to begin with digital accessibility — Daniel Jang</title>
+<meta name="description" content="Two real starting points for getting into digital accessibility, depending on whether you want a fast practical foothold or a thorough credentialed understanding.">
+<link rel="canonical" href="https://jangdaniel.com/blog/where-to-begin-with-digital-accessibility.html">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<meta name="theme-color" content="#083E42">
+<meta property="og:title" content="Where to begin with digital accessibility — Daniel Jang">
+<meta property="og:description" content="Two real starting points for getting into digital accessibility, depending on whether you want a fast practical foothold or a thorough credentialed understanding.">
+<meta property="og:url" content="https://jangdaniel.com/blog/where-to-begin-with-digital-accessibility.html">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://jangdaniel.com/assets/og-blog-where-to-begin-with-digital-accessibility.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://jangdaniel.com/assets/og-blog-where-to-begin-with-digital-accessibility.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Where to begin with digital accessibility",
+  "description": "Two real starting points for getting into digital accessibility, depending on whether you want a fast practical foothold or a thorough credentialed understanding.",
+  "author": {"@type": "Person", "name": "Daniel Jang", "url": "https://jangdaniel.com"},
+  "datePublished": "2026-07-11",
+  "url": "https://jangdaniel.com/blog/where-to-begin-with-digital-accessibility.html",
+  "publisher": {"@type": "Person", "name": "Daniel Jang"}
+}
+</script>
+<style>
+  :root {
+    --paper: #F7F5F0; --ink: #1A2426; --ink-soft: #3F4E4F;
+    --evergreen: #0E5A5E; --evergreen-deep: #083E42; --marigold: #C0392B;
+    --line: #D5D0C5; --card: #FCFBF7; --focus: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Public Sans", -apple-system, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.75; font-size: 1.125rem; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+  ::selection { background: var(--evergreen-deep); color: #fff; }
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: var(--evergreen-deep); color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+  .wrap { max-width: 42rem; margin: 0 auto; padding: 0 1.5rem; }
+  header { border-bottom: 1px solid var(--line); padding: 1.1rem 0; }
+  .wordmark { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .wordmark span { color: var(--evergreen); }
+  main { padding: 3.5rem 0 4rem; }
+  .crumb { font-family: "IBM Plex Mono", monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--evergreen); margin-bottom: 0.8rem; }
+  .crumb a { color: var(--evergreen); }
+  .post-date { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1rem; }
+  h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(1.7rem, 4vw, 2.3rem); letter-spacing: -0.02em; line-height: 1.25; margin-bottom: 1.6rem; }
+  h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: 1.3rem; margin: 2rem 0 0.8rem; color: var(--evergreen-deep); }
+  p + p { margin-top: 1rem; }
+  a { color: var(--evergreen-deep); font-weight: 500; }
+  ul { padding-left: 1.3rem; margin: 0.8rem 0; }
+  li { margin: 0.5rem 0; }
+  .pull { border-left: 4px solid var(--marigold); padding: 0.3rem 0 0.3rem 1.1rem; margin: 1.6rem 0; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.15rem; font-weight: 600; color: var(--evergreen-deep); }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 2rem 0 0; }
+  .tags span { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; padding: 0.22rem 0.65rem; border-radius: 999px; background: rgba(14, 90, 94, 0.12); color: var(--evergreen-deep); }
+  .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 2.5rem; background: var(--evergreen-deep); color: #fff; text-decoration: none; font-weight: 600; padding: 0.7rem 1.5rem; border-radius: 8px; }
+  .back:hover { background: var(--evergreen); }
+  footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header>
+  <div class="wrap"><a class="wordmark" href="../index.html">Daniel Jang<span>.</span></a></div>
+</header>
+<main id="main">
+  <article class="wrap">
+    <p class="crumb"><a href="index.html">Blog</a></p>
+    <p class="post-date">July 11, 2026</p>
+    <h1>Where to begin with digital accessibility</h1>
+
+    <img src="../assets/banner-blog-where-to-begin-with-digital-accessibility.png" alt="" width="1600" height="500" style="width:100%; height:auto; border-radius:12px; margin: -0.8rem 0 1.8rem; display:block;">
+
+    <p>People starting out in accessibility ask me some version of the same question: where do I actually begin? There's no shortage of standards to read and acronyms to learn, and it's easy to spend weeks circling the topic without doing anything hands-on. I think the honest answer depends on what you're trying to get out of it, and there are two real starting points worth knowing about.</p>
+
+    <h2>If you want a fast, practical foothold: DHS Trusted Tester</h2>
+    <p>The Department of Homeland Security offers a free Section 508 Trusted Tester certification, and it's a genuinely robust way in. It teaches you to actually test a page or application against Section 508 requirements using a defined, repeatable methodology, not just recognize accessibility problems in the abstract. If you want to get your hands dirty and come out the other side able to run a real conformance test, this is the most direct path I know of, and the fact that it costs nothing removes the biggest barrier that usually keeps people from starting at all.</p>
+
+    <h2>If you want the broader picture: CPACC through IAAP</h2>
+    <p>If you're after a more thorough, conceptual understanding, the Certified Professional in Accessibility Core Competencies through the International Association of Accessibility Professionals is the path I'd point to, partly because it's the one I took myself. CPACC covers the disability, legal, and standards landscape at a wider angle than a single testing methodology can, which matters more than it might sound like it does. It's also become a genuinely useful way to stay current on the Department of Justice's Title II requirements, which now bring web and mobile accessibility obligations to state and local government entities. If you work in or around the public sector, that context isn't optional background reading; it's the actual compliance environment you're operating in.</p>
+
+    <p class="pull">One teaches you to test. The other teaches you why the testing matters, and to whom.</p>
+
+    <p>These aren't competing options so much as different entry points that eventually converge. Trusted Tester gets you testing quickly and gives you something concrete to point to. CPACC gives you the legal and conceptual grounding that makes your testing decisions defensible, especially if you're explaining them to someone outside accessibility. I'd genuinely recommend both over time rather than picking one forever, but if you can only start with one, let your immediate goal decide: testing work now, choose Trusted Tester; policy, compliance, or public-sector context now, choose CPACC.</p>
+
+    <p>Either way, the actual first step is smaller than it feels from the outside. Pick one, register, and start.</p>
+
+    <div class="tags"><span>Accessibility</span><span>CPACC</span><span>Section 508</span><span>Career Path</span></div>
+
+    <a class="back" href="index.html">← All posts</a>
+  </article>
+</main>
+<footer>
+  <div class="wrap"><p>© 2026 Daniel Jang — <a href="../index.html">back to the portfolio</a></p></div>
+</footer>
+</body>
+</html>
