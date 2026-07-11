@@ -9,6 +9,9 @@
 <meta name="theme-color" content="#083E42"><meta name="description" content="Portfolio demo of a post-consultation feedback survey designed for accreditation-aligned data collection.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: #083E42; color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.6; }
   .demo-bar {
@@ -58,13 +61,25 @@
   .thanks h2 { font-weight: 500; color: #002A3A; margin-bottom: 8px; }
   .thanks p { color: #555; max-width: 40ch; margin: 0 auto; }
   @media (max-width: 480px) { .likert { grid-template-columns: 1fr; } .likert label { flex-direction: row; justify-content: flex-start; padding: 8px 12px; } .survey-body, .survey-head, .survey-intro { padding-left: 20px; padding-right: 20px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 </style>
+<link rel="canonical" href="https://jangdaniel.com/demos/feedback-form.html">
 </head>
 <body>
+<a class="skip-link" href="#demo-main">Skip to demo content</a>
 <div class="demo-bar" role="note">
   <span><strong>Portfolio demo</strong> — a post-consultation survey designed as accreditation evidence (SACSCOC-aligned faculty development metrics). Nothing is collected; submitting shows the confirmation state.</span>
   <a href="../index.html#work">← Back to portfolio</a>
 </div>
+<main id="demo-main">
 
 <div class="survey">
   <div class="survey-head">
@@ -141,6 +156,7 @@
   </div>
 </div>
 
+</main>
 <script>
 document.getElementById('submit-btn').addEventListener('click', function () {
   document.getElementById('form-body').style.display = 'none';
