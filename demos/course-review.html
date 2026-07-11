@@ -9,6 +9,9 @@
 <meta name="theme-color" content="#083E42">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600&display=swap" rel="stylesheet">
 <style>
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: #083E42; color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.65; }
   .demo-bar {
@@ -61,12 +64,15 @@
   .legend .flag { cursor: default; pointer-events: none; }
   @media (prefers-reduced-motion: reduce) { .flag:hover { transform: none; } }
 </style>
+<link rel="canonical" href="https://jangdaniel.com/demos/course-review.html">
 </head>
 <body>
+<a class="skip-link" href="#demo-main">Skip to demo content</a>
 <div class="demo-bar" role="note">
   <span><strong>Portfolio demo</strong> — a fictional course excerpt with original review criteria. Click each numbered marker to read the reviewer feedback.</span>
   <a href="../index.html#work">← Back to portfolio</a>
 </div>
+<main id="demo-main">
 
 <div class="stage">
   <div class="intro">
@@ -180,6 +186,7 @@
   </div>
 </div>
 
+</main>
 <script>
 document.querySelectorAll('.flag').forEach(function (btn) {
   if (!btn.getAttribute('aria-controls')) return;
