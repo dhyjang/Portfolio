@@ -9,6 +9,9 @@
 <meta name="theme-color" content="#083E42"><meta name="description" content="Portfolio demo of an interactive employee appreciation card generator built with WCAG AA compliance.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: #083E42; color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; }
   .demo-bar {
@@ -55,13 +58,25 @@
   .card .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
   .card .foot .label { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; display: block; margin-bottom: 3px; }
   .card .foot .who { font-size: 1rem; font-weight: 500; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 </style>
+<link rel="canonical" href="https://jangdaniel.com/demos/kudos-card.html">
 </head>
 <body>
+<a class="skip-link" href="#demo-main">Skip to demo content</a>
 <div class="demo-bar" role="note">
   <span><strong>Portfolio demo</strong> — an interactive appreciation card tool originally deployed with Microsoft Forms + Power Automate delivery. Fully keyboard-operable, WCAG AA verified.</span>
   <a href="../index.html#work">← Back to portfolio</a>
 </div>
+<main id="demo-main">
 
 <div class="tool">
   <div class="panel">
@@ -101,6 +116,7 @@
   </div>
 </div>
 
+</main>
 <script>
 const themes = {
   navy:   { bg:'#1a2e4a', text:'#faf7f0', accent:'#e8c97a', sub:'#d5cfc2', badgeBg:'rgba(232,201,122,0.15)', badgeBorder:'#c9a84c', badgeText:'#e8c97a' },
