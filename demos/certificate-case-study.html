@@ -46,8 +46,18 @@
   ol.flow li { margin: 0.5rem 0; }
   .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 2.5rem; background: var(--evergreen-deep); color: #fff; text-decoration: none; font-weight: 600; padding: 0.7rem 1.5rem; border-radius: 8px; }
   .back:hover { background: var(--evergreen); }
+  .cs-nav { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+  .back.next { background: transparent; color: var(--evergreen-deep); border: 1.5px solid var(--evergreen); }
+  .back.next:hover { background: rgba(14, 90, 94, 0.08); }
   footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
 </style>
+<link rel="canonical" href="https://jangdaniel.com/demos/certificate-case-study.html">
+<meta property="og:title" content="Case Study: Accessible Certificate Automation — Daniel Jang">
+<meta property="og:description" content="How an end-to-end automated certificate workflow eliminated hours of manual processing while meeting accessibility standards — with a live demo you can try.">
+<meta property="og:url" content="https://jangdaniel.com/demos/certificate-case-study.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jangdaniel.com/assets/og-image-v5.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -106,7 +116,10 @@
     <h2>What's next</h2>
     <p>The current workflow serves two professional development courses. The next step is templatizing it — abstracting the course-specific pieces so the same pipeline can be replicated for any course that requires certification, making accessible automated credentialing the institution's permanent default rather than a per-course project. That's the real goal of automation work in an educational setting: not saving one person time, but changing what the standard operating procedure is.</p>
 
-    <a class="back" href="../index.html#work">← Back to all work</a>
+    <div class="cs-nav">
+      <a class="back" href="../index.html#work">← Back to all work</a>
+      <a class="back next" href="kudos-case-study.html">Next case study: Accessible Kudos Card Tool →</a>
+    </div>
   </article>
 </main>
 <footer>
