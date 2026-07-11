@@ -9,6 +9,9 @@
 <meta name="theme-color" content="#083E42">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  .skip-link { position: absolute; top: -100px; left: 1rem; background: #083E42; color: #fff; padding: 0.6rem 1.1rem; border-radius: 0 0 8px 8px; text-decoration: none; font-weight: 600; z-index: 100; }
+  .skip-link:focus { top: 0; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #ECEAE4; font-family: 'Poppins', Arial, sans-serif; padding: 24px 16px 48px; color: #17231E; line-height: 1.6; }
   .demo-bar {
@@ -50,13 +53,25 @@
   .why ul { padding-left: 1.2rem; }
   .why li { font-size: 0.92rem; margin: 6px 0; }
   .why li strong { color: #8E2A20; font-weight: 600; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 </style>
+<link rel="canonical" href="https://jangdaniel.com/demos/caption-cleanup.html">
 </head>
 <body>
+<a class="skip-link" href="#demo-main">Skip to demo content</a>
 <div class="demo-bar" role="note">
   <span><strong>Portfolio demo</strong> — from a faculty training on video accessibility. Sample transcript, original content.</span>
   <a href="../index.html#work">← Back to portfolio</a>
 </div>
+<main id="demo-main">
 
 <div class="stage">
   <h1>Auto-captions aren't accessible captions</h1>
@@ -102,6 +117,7 @@ the corrected captions.</div>
   </div>
 </div>
 
+</main>
 <script>
 const cleaned = `So today we're going to talk
 about accessibility in your
