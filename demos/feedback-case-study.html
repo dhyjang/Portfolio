@@ -46,8 +46,18 @@
   ol.flow li { margin: 0.5rem 0; }
   .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 2.5rem; background: var(--evergreen-deep); color: #fff; text-decoration: none; font-weight: 600; padding: 0.7rem 1.5rem; border-radius: 8px; }
   .back:hover { background: var(--evergreen); }
+  .cs-nav { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+  .back.next { background: transparent; color: var(--evergreen-deep); border: 1.5px solid var(--evergreen); }
+  .back.next:hover { background: rgba(14, 90, 94, 0.08); }
   footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
 </style>
+<link rel="canonical" href="https://jangdaniel.com/demos/feedback-case-study.html">
+<meta property="og:title" content="Case Study: Stakeholder Consultation Feedback System — Daniel Jang">
+<meta property="og:description" content="Designing a post-consultation feedback survey that turns stakeholder support into measurable, improvable data — with the actual instrument to explore.">
+<meta property="og:url" content="https://jangdaniel.com/demos/feedback-case-study.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jangdaniel.com/assets/og-image-v5.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -104,7 +114,10 @@
     <h2>What's next</h2>
     <p>Iterate the form based on pilot response patterns, then close the loop the data was built for: segment effectiveness ratings by consultation type, feed the results into service planning, and let stakeholder feedback — not intuition — set the improvement agenda.</p>
 
-    <a class="back" href="../index.html#work">← Back to all work</a>
+    <div class="cs-nav">
+      <a class="back" href="../index.html#work">← Back to all work</a>
+      <a class="back next" href="certificate-case-study.html">Next case study: Accessible Certificate Automation →</a>
+    </div>
   </article>
 </main>
 <footer>
