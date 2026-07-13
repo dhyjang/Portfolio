@@ -39,6 +39,19 @@
   .back { display: inline-flex; align-items: center; min-height: 44px; margin-top: 2.5rem; background: var(--evergreen-deep); color: #fff; text-decoration: none; font-weight: 600; padding: 0.7rem 1.5rem; border-radius: 8px; }
   .back:hover { background: var(--evergreen); }
   footer { border-top: 1px solid var(--line); padding: 1.8rem 0 2.5rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .byline {
+    display: flex; align-items: center; gap: 0.9rem;
+    padding: 0.9rem 1.1rem; margin: 1.4rem 0 0;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--card); text-decoration: none;
+  }
+  .byline:hover .byline-cta { text-decoration: underline; text-underline-offset: 3px; }
+  .byline:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  .byline-avatar { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+  .byline-text { display: flex; flex-direction: column; gap: 0.15rem; }
+  .byline-name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; color: var(--ink); font-size: 1rem; }
+  .byline-role { font-size: 0.85rem; color: var(--ink-soft); }
+  .byline-cta { font-size: 0.85rem; font-weight: 600; color: var(--evergreen-deep); }
 </style>
 <link rel="canonical" href="https://jangdaniel.com/blog/why-i-open-reviews-with-strengths.html">
 <meta property="og:title" content="Why every course review starts with what's working — Daniel Jang">
@@ -80,16 +93,27 @@
     <p class="post-date">July 10, 2026</p>
     <img src="../assets/banner-blog-why-i-open-reviews-with-strengths.png" alt="" width="1600" height="500" style="width:100%; height:auto; border-radius:12px; margin-bottom:1.8rem; display:block;">
     <h1>Why every course review starts with what's working</h1>
+    <a class="byline" href="https://www.linkedin.com/in/jangdaniel/">
+      <img class="byline-avatar" src="../assets/headshot.jpg" alt="" width="48" height="48">
+      <span class="byline-text">
+        <span class="byline-name">Written by Daniel Jang</span>
+        <span class="byline-role">Instructional Designer</span>
+        <span class="byline-cta">Connect on LinkedIn →</span>
+      </span>
+    </a>
+
 
     <p>Faculty send me their course expecting a list of what's wrong with it. That expectation makes sense: "review" sounds like an evaluation, and evaluations usually come with a grade. But a course quality review isn't a grade, it's a conversation about a course someone built, often over years, and it starts on the wrong foot the moment it reads like a deficiency report.</p>
 
-    <p>So every review I write opens with strengths, and not as a courtesy paragraph before the real feedback begins. The strengths section is doing real work: it tells the instructor I actually looked closely enough to notice what's already effective, and it gives us a shared floor to build from. "Your weekly overview pages set expectations clearly before students see the objectives" is a specific, true observation, and it also implicitly says: keep doing this.</p>
+    <p>This isn't just a personal preference. Quality Matters, whose Peer Reviewer certification I completed, describes its own <a href="https://www.qualitymatters.org/qm-membership/faqs/how-course-review-works">review process</a> as diagnostic rather than pass/fail, collegial in tone while still rigorous, and built on a premise most reviewers would do well to keep visible: no course is perfect, and the goal is improvement, not judgment. Reviewers are trained to support every finding with evidence and to pair every unmet standard with specific, actionable suggestions. Opening with strengths is how I operationalize that stance. If the process is genuinely diagnostic, then what's working in a course is a finding, and it deserves the same specificity as what isn't.</p>
+
+    <p>So every review I write opens with strengths, and not as a courtesy paragraph before the real feedback begins. The strengths section is doing real work: it tells the instructor I actually looked closely enough to notice what's already effective, and it gives us a shared floor to build from. "Your weekly overview pages set expectations clearly before students see the objectives" is a specific, true observation, and it also implicitly says: keep doing this. It's the same evidence discipline QM expects for a "Not Met" standard, applied to what's succeeding.</p>
 
     <p class="pull">Feedback that only points at problems teaches people to get defensive. Feedback that names what's working teaches people to keep noticing it themselves.</p>
 
     <p>If you want to see this structure in practice, my <a href="../demos/course-review.html">interactive course review sample</a> walks through a full review the way an instructor receives it, strengths first.</p>
 
-    <p>The ordering matters as much as the content. By the time a review reaches the action items, the instructor already knows I'm not trying to tear the course down, so a note like "the discussion is worth 20 points but doesn't say how those points are earned" reads as a fixable gap, not a failure. Same information, completely different reception, purely because of what came first.</p>
+    <p>The ordering matters as much as the content. By the time a review reaches the action items, the instructor already knows I'm not trying to tear the course down, so a note like "the discussion is worth 20 points but doesn't say how those points are earned" reads as a fixable gap, not a failure. Same information, completely different reception, purely because of what came first. That's also why the collegial tone QM asks of reviewers isn't a softness requirement; it's what keeps the rigorous part actionable. Feedback that never gets implemented, however accurate, didn't improve the course.</p>
 
     <p>I don't think this is a soft skill layered on top of the "real" instructional design work. I think it is the instructional design work. A rubric or a checklist can tell you whether an objective is measurable. It can't tell you how to deliver that finding to a person who put real effort into writing it. That part is the actual craft, and it's the part that's hardest to templatize.</p>
 
