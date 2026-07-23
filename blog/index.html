@@ -103,7 +103,7 @@ function formatLocalDate(dateStr) {
   return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-fetch('posts.json')
+fetch('posts.json?v=' + Date.now())
   .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
   .then(function (posts) {
     var container = document.getElementById('posts');
